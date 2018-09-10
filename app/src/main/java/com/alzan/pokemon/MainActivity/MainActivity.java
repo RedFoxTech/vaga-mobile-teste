@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_poke) {
             selectedFragment = AllPokeFragment.newInstance();
-            setTitle("Pókemons");
+            setTitle("Pokémons");
         } else if (id == R.id.nav_type) {
             selectedFragment = TypeFragment.newInstance();
             setTitle("Tipos");
