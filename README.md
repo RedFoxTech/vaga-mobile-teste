@@ -1,4 +1,4 @@
-# Teste de Android
+# Teste de Mobile
 
 Olá Dev!  Tudo bem?
 
@@ -23,20 +23,20 @@ Mas nossa busca não seria muito útil só com nome e foto de cada Pokémon. Ent
 ## Consigo fazer?
 
 Consegue sim! Só precisa saber (ou aprender agora) um pouco sobre as seguintes tecnologias:
-- Java
-- Android SDK 
-- XML
+- Java ou Kotlin, se for Android
+- Swift ou Objective-C, se for iOS
 - JSON
 - Git
-- Consumo de APIs Rest
+- Design Patterns
+- Consumo de API Rest
 
 
 ## Regras
 
 Para o desafio ficar mais interessante, decidimos criar algumas regras básicas:
 
-- No layout, você deve utilizar algum padrão (ex: Bootstrap, Material Design, etc...)
-- Na parte de Java, deve utilizar algum padrão de desenvolvimento (ex: MVC, MVVM, MVP, etc...)
+- No layout, você deve utilizar algum padrão de design conhecido para Mobile (ex: Material Design)
+- Você também deve utilizar algum padrão de desenvolvimento (ex: MVC, MVVM, MVP, etc...)
 
 ## Por onde começo?
 
@@ -46,4 +46,4 @@ Após terminar o desafio, você pode solicitar um pull request para a branch mas
 
 ## Só isso?
 
-Só! Mas se estiver motivado, pode publicá-lo na sua conta do Google Play e nos enviar o link pelo commit do pull request.
+Só! Mas se estiver motivado, pode publicá-lo na sua loja do Google Play ou da App Store e nos enviar o link.
