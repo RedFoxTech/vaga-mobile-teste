@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".activity.MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="top">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:text="SELECIONE A ORDEM:"/>
+        <Spinner
+            android:id="@+id/Spn_Ordem"
+            android:layout_width="match_parent"
+            android:layout_gravity="end|center"
+            android:layout_height="60dp">
+        </Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="left|center"
+            android:layout_height="wrap_content"
+            android:text="BUSCA:"/>
+        <EditText
+            android:id="@+id/Edt_Busca"
+            android:layout_width="230dp"
+            android:layout_gravity="center|center"
+            android:layout_height="60dp">
+        </EditText>
+
+        <Button
+            android:id="@+id/Btn_busca"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+
+            android:background="@drawable/ic_search" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="*Para ver outros pokemons faça sua pesquisa utilizando Nome ou Numero pokedex. Para ver todos novamente basta pesquisar sem prrencher o campo busca"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_pokemons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+
+</LinearLayout>

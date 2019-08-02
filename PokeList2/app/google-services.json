@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "510755546541",
+    "firebase_url": "https://pokelist-63e9e.firebaseio.com",
+    "project_id": "pokelist-63e9e",
+    "storage_bucket": "pokelist-63e9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510755546541:android:d5ac927a9d00c465",
+        "android_client_info": {
+          "package_name": "isa.silva.pokelist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510755546541-871bm679bd24al4452mpua07593iht1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuWGlEDhgOqej5i6DnsO2iShTAhizQrzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510755546541-871bm679bd24al4452mpua07593iht1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
