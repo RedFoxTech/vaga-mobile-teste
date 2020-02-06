@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Detalhes">
+
+
+    <TextView
+        android:id="@+id/txtId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="14pt" />
+
+    <TextView
+        android:id="@+id/txtNomePokemon"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:text="Pokemon"
+        android:textSize="18pt" />
+    <TextView
+        android:id="@+id/txtPeso"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:text="Pokemon"
+        android:textSize="18pt" />
+
+    <ImageView
+        android:id="@+id/imagemPokemon"
+        android:layout_width="254dp"
+        android:layout_height="254dp"
+        android:text="0000"
+        android:contentDescription="TODO"
+        />
+
+
+
+</LinearLayout>
