@@ -23,11 +23,12 @@ Mas nossa busca não seria muito útil só com nome e foto de cada Pokémon. Ent
 ## Consigo fazer?
 
 Consegue sim! Só precisa saber (ou aprender agora) um pouco sobre as seguintes tecnologias:
-- Java ou Kotlin, se for Android
-- Swift ou Objective-C, se for iOS
+- Se for nativo use:
+  - Java ou Kotlin, para Android
+  - Swift para iOS
+- Se for híbrido, use Javascript (React Native) ou Dart (Flutter)
 - JSON
 - Git
-- Design Patterns
 - Consumo de API Rest
 
 
