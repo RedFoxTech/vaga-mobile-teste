@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "AFF474E8-10B4-4AAA-8303-795D4B81CD3A"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "433B9E25-DB3E-410B-9003-C0C67F447EE2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppPokemonRedFoxTeste/Home/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "433B9E25-DB3E-410B-9003-C0C67F447EE2 - c8bbf61e163c9ac1"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppPokemonRedFoxTeste.ViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; AppPokemonRedFoxTeste.ViewController"
+                  moduleName = "AppPokemonRedFoxTeste"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaledjamalelazanki/Documents/Kaled/AppFinal/AppPokemonRedFoxTeste/AppPokemonRedFoxTeste/Home/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "433B9E25-DB3E-410B-9003-C0C67F447EE2 - 2c7453fae613d868"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppPokemonRedFoxTeste.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; AppPokemonRedFoxTeste.ViewController"
+                  moduleName = "AppPokemonRedFoxTeste"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaledjamalelazanki/Documents/Kaled/AppFinal/AppPokemonRedFoxTeste/AppPokemonRedFoxTeste/Home/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "182">
+               </Location>
+               <Location
+                  uuid = "433B9E25-DB3E-410B-9003-C0C67F447EE2 - 95adb1568afec4a9"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppPokemonRedFoxTeste.ViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;AppPokemonRedFoxTeste.ViewController&gt;"
+                  moduleName = "AppPokemonRedFoxTeste"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaledjamalelazanki/Documents/Kaled/AppFinal/AppPokemonRedFoxTeste/AppPokemonRedFoxTeste/Home/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "433B9E25-DB3E-410B-9003-C0C67F447EE2 - f491133978a381a0"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppPokemonRedFoxTeste.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;AppPokemonRedFoxTeste.ViewController&gt;"
+                  moduleName = "AppPokemonRedFoxTeste"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaledjamalelazanki/Documents/Kaled/AppFinal/AppPokemonRedFoxTeste/AppPokemonRedFoxTeste/Home/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "107">
+               </Location>
+               <Location
+                  uuid = "433B9E25-DB3E-410B-9003-C0C67F447EE2 - e03f62239801564f"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppPokemonRedFoxTeste.ViewController.__deallocating_deinit"
+                  moduleName = "AppPokemonRedFoxTeste"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaledjamalelazanki/Documents/Kaled/AppFinal/AppPokemonRedFoxTeste/AppPokemonRedFoxTeste/Home/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B559F2A-1596-41B2-9321-86A9FC8D5BE2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppPokemonRedFoxTeste/Home/Cell/PokemonNameCellCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EB1B3EC0-B414-437D-989D-8630D2BA4B89"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppPokemonRedFoxTeste/Pokemon.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "Response"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0CB9ADE0-5C8E-4419-8152-3FFC3095352F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppPokemonRedFoxTeste/Home/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "ViewController"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "20203F79-7310-4CF2-88E4-E8757DAF410F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppPokemonRedFoxTeste/Home/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "scrollViewDidEndDragging(_:willDecelerate:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9CE0F36-37BE-4312-ABCD-6053964FF74E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppPokemonRedFoxTeste/Home/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "scrollViewDidEndDragging(_:willDecelerate:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "20C13D92-DD4E-443E-9FA1-EA2E9CA90511"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppPokemonRedFoxTeste/Home/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "getPokemons(url:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76754879-648B-4E9A-B1F9-033EFFE3B38E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppPokemonRedFoxTeste/Home/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "getPokemons(url:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "76754879-648B-4E9A-B1F9-033EFFE3B38E - 4e3bcc92b6941f3f"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppPokemonRedFoxTeste.ViewController.(getPokemons in _1EF9951479C614B9F189F8CE7520AFE7)(url: Swift.String) -&gt; ()"
+                  moduleName = "AppPokemonRedFoxTeste"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaledjamalelazanki/Documents/Kaled/AppFinal/AppPokemonRedFoxTeste/AppPokemonRedFoxTeste/Home/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "45">
+               </Location>
+               <Location
+                  uuid = "76754879-648B-4E9A-B1F9-033EFFE3B38E - 190def0e1799d063"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (AppPokemonRedFoxTeste.ResponseEnum&lt;AppPokemonRedFoxTeste.Response&gt;) -&gt; () in AppPokemonRedFoxTeste.ViewController.(getPokemons in _1EF9951479C614B9F189F8CE7520AFE7)(url: Swift.String) -&gt; ()"
+                  moduleName = "AppPokemonRedFoxTeste"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kaledjamalelazanki/Documents/Kaled/AppFinal/AppPokemonRedFoxTeste/AppPokemonRedFoxTeste/Home/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "202">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06AA2E86-45AC-465E-8345-FC377408D665"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppPokemonRedFoxTeste/Home/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "getPokemons(url:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
