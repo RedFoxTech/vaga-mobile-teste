@@ -1,3 +1,14 @@
+Projeto focado em desenvolver um app de Pokedex, devido eu estar em semana de prova e com pouco tempo para finalizar, continuarei até a finalização do app, com o intuito de ter o app devidamente finalizado.
+
+# Falta implementação de:
+
+- listar pokemon por ID
+- listar pokemon por Tipos - FlatList
+- implementar as Sprites via API fornecida
+- adicionar "Loading"
+
+
+
 # Teste de Mobile
 
 Olá Dev!  Tudo bem?
