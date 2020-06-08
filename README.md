@@ -13,9 +13,9 @@
 
 # Degustações Imediatas
 
-- Acessando funcyona.net (não está otimizado, acessar pelo computador)
-- Carregando expo.io/@lgberro/pokeapi no aplicativo Expo
-- Instalando APK de drive.google.com/uc?id=1X3NPZBDpWo0dnjM5qhQsncqrQG9hx-PQ
+- Acessando `funcyona.net` (não está otimizado, acessar pelo computador)
+- Carregando `expo.io/@lgberro/pokeapi` no aplicativo Expo
+- Instalando APK de `drive.google.com/uc?id=1X3NPZBDpWo0dnjM5qhQsncqrQG9hx-PQ`
 
 # Teste de Mobile
 
