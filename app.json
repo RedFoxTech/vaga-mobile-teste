@@ -1,0 +1,17 @@
+{
+  "name": "PokePedia",
+  "displayName": "PokePedia",
+  "expo": {
+    "name": "PokePedia",
+    "slug": "pokepedia",
+    "version": "1.0.0",
+    "icon": "src/assets/images/icon.png",
+    "platforms": ["ios", "android", "web"],
+    "assetBundlePatterns": ["**/*"],
+    "description": "",
+    "android": {
+      "package": "br.com.lgberro.pokepedia",
+      "versionCode": 1
+    }
+  }
+}

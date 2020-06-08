@@ -1,0 +1,7 @@
+#! /bin/bash
+expo publish
+cd android
+./gradlew assembleRelease
+cp app/build/outputs/apk/release/app-release.apk ~/Downloads/mockup2.apk
+cd ..
+osascript -e 'display notification "compilation complete" with title "APK Ready"'

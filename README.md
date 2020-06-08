@@ -1,3 +1,22 @@
+# Compilação
+
+1. `npm install -g expo-cli`
+2. `npm install`
+ 
+# Android
+
+- `expo start` digitar `p` para produção e `a` para abrir no emulador ou dispositivo via adb
+
+# Web
+
+- `expo start:web` digitar `p` para produção e `w` para abrir no navegador
+
+# Degustações Imediatas
+
+- Acessando funcyona.net (não está otimizado, acessar pelo computador)
+- Carregando expo.io/@lgberro/pokeapi no aplicativo Expo
+- Instalando APK de drive.google.com/uc?id=1X3NPZBDpWo0dnjM5qhQsncqrQG9hx-PQ
+
 # Teste de Mobile
 
 Olá Dev!  Tudo bem?
