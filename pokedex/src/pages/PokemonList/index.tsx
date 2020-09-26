@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { BorderlessButton } from 'react-native-gesture-handler';
 
+import colors from '../../global/styles/colors';
 import api from '../../services/api';
 
 import PageHeader from '../../components/PageHeader';
@@ -125,7 +126,11 @@ const PokemonList: React.FC = () => {
             onPress={handleToggleFiltersVisible}
           >
             <FilterButtonText>Filtrar </FilterButtonText>
-            <FeatherIcon name="filter" size={20} color="#fff" />
+            <FeatherIcon
+              name="filter"
+              size={20}
+              color={filtersVisible ? colors.red : '#fff'}
+            />
           </BorderlessButton>
         }
       >

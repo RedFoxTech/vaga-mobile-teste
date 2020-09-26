@@ -26,7 +26,7 @@ export const LogoImage = styled.Image`
   height: 40px;
 `;
 
-export const Header = styled.View`
+export const HeaderRight = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;

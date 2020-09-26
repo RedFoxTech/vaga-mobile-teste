@@ -215,7 +215,7 @@ const Details: React.FC = () => {
 
               <Divider />
 
-              <StatsLabel>Stats:</StatsLabel>
+              <StatsLabel>Estatísticas:</StatsLabel>
               {pokemon.stats.map((stat) => (
                 <Stat key={stat.stat_name}>
                   {stat.stat_name}: {stat.stat_power}

@@ -13,7 +13,6 @@ import {
   ProfileInfo,
   Name,
   TypesContainer,
-  Type,
   AbilitiesLabel,
   AbilitiesContainer,
   Abilities,
@@ -25,13 +24,14 @@ import {
   InfoButton,
   InfoButtonText,
 } from './styles';
+import PokemonType, { PokemonsTypesOptions } from '../PokemonType';
 
 export interface PokemonBasicProps {
   id: number;
   name: string;
   base_experience: string;
   avatar: string;
-  types: Array<string>;
+  types: Array<PokemonsTypesOptions>;
   abilities: Array<string>;
 }
 
@@ -87,7 +87,7 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ pokemon, favorited }) => {
             <Name>{pokemon.name}</Name>
             <TypesContainer>
               {pokemon.types.map((type) => (
-                <Type key={type}>{type}</Type>
+                <PokemonType key={String(type)} type={type} />
               ))}
             </TypesContainer>
           </ProfileInfo>

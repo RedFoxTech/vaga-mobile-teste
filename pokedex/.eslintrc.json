@@ -35,6 +35,7 @@
     "react/jsx-one-expression-per-line": "off",
     "no-unused-expressions": "off",
     "no-use-before-define":"off",
+    "no-shadow": "off",
     "import/no-duplicates": "off",
     "camelcase": "off",
     "@typescript-eslint/camelcase": "off",

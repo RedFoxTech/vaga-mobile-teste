@@ -53,13 +53,6 @@ export const TypesContainer = styled.View`
   flex-direction: row;
 `;
 
-export const Type = styled.Text`
-  font-family: ${fonts.RobotoRegular};
-  color: #6a6180;
-  font-size: 14px;
-  margin: 4px 2px 0px 2px;
-`;
-
 export const ExperienceContainer = styled.View`
   background: #fafafc;
   align-items: center;

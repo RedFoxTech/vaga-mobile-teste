@@ -12,7 +12,7 @@ import {
   LogoImage,
   BottomBar,
   Title,
-  Header,
+  HeaderRight,
 } from './styles';
 
 interface PageHeaderProps {
@@ -43,7 +43,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
       <BottomBar>
         <Title>{title}</Title>
 
-        <Header>{headerRight}</Header>
+        <HeaderRight>{headerRight}</HeaderRight>
       </BottomBar>
       {children}
     </Container>
