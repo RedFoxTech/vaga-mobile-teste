@@ -2,9 +2,10 @@ import React, { useState, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 
 import AsyncStorage from '@react-native-community/async-storage';
+import { FlatList } from 'react-native';
 import PageHeader from '../../components/PageHeader';
 
-import { Container, PokemonList } from './styles';
+import { Container } from './styles';
 import PokemonItem, { PokemonProps } from '../../components/PokemonItem';
 
 const Favorites: React.FC = () => {
@@ -26,18 +27,18 @@ const Favorites: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title="Meus proffys favoritos" />
+      <PageHeader title="Meus pokémons favoritos" />
 
-      <PokemonList
-        contentContainerStyle={{
-          paddingHorizontal: 16,
-          paddingBottom: 8,
-        }}
-      >
-        {favorites.map((pokemon: PokemonProps) => (
-          <PokemonItem key={pokemon.id} pokemon={pokemon} favorited />
-        ))}
-      </PokemonList>
+      <FlatList
+        style={{ marginTop: -40, paddingHorizontal: 16 }}
+        showsVerticalScrollIndicator={false}
+        data={favorites}
+        scrollEnabled
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => (
+          <PokemonItem key={item.id} pokemon={item} favorited />
+        )}
+      />
     </Container>
   );
 };

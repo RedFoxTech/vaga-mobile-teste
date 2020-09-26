@@ -37,6 +37,7 @@ export const Title = styled.Text`
   color: #fff;
   font-size: 24px;
   line-height: 32px;
-  max-width: 160px;
+  max-width: 320px;
   margin: 0 30px;
+  text-transform: capitalize;
 `;

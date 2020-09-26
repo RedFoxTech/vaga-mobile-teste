@@ -4,11 +4,11 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 import { useNavigation } from '@react-navigation/native';
 import colors from '../../global/styles/colors';
-import api from '../../services/api';
 
 import {
   Container,
   Profile,
+  LeftContainer,
   Avatar,
   ProfileInfo,
   Name,
@@ -26,24 +26,17 @@ import {
   InfoButtonText,
 } from './styles';
 
-export interface PokemonProps {
+export interface PokemonBasicProps {
   id: number;
   name: string;
   base_experience: string;
-  height: number;
-  weight: number;
   avatar: string;
-  stats: Array<{
-    stat_name: string;
-    stat_power: number;
-  }>;
   types: Array<string>;
   abilities: Array<string>;
-  location_area_encounters: string;
 }
 
 interface PokemonItemProps {
-  pokemon: PokemonProps;
+  pokemon: PokemonBasicProps;
   favorited: boolean;
 }
 
@@ -53,7 +46,7 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ pokemon, favorited }) => {
   const [isFavorited, setIsFavorited] = useState(favorited);
 
   const handleNavigateToDetails = useCallback(async () => {
-    navigate('Details', { pokemon, favorited });
+    navigate('Details', { id: pokemon.id, favorited });
   }, [favorited, navigate, pokemon]);
 
   const handleToggleFavorite = useCallback(async () => {
@@ -69,7 +62,7 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ pokemon, favorited }) => {
 
     if (isFavorited) {
       const favoriteIndex = favoritesArray.findIndex(
-        (pokemonItem: PokemonProps) => pokemonItem.id === pokemon.id,
+        (pokemonItem: PokemonBasicProps) => pokemonItem.id === pokemon.id,
       );
 
       favoritesArray.splice(favoriteIndex, 1);
@@ -83,23 +76,25 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ pokemon, favorited }) => {
   return (
     <Container>
       <Profile>
-        <Avatar
-          source={{
-            uri: pokemon.avatar,
-          }}
-        />
+        <LeftContainer>
+          <Avatar
+            source={{
+              uri: pokemon.avatar,
+            }}
+          />
 
-        <ProfileInfo>
-          <Name>{pokemon.name}</Name>
-          <TypesContainer>
-            <Type>tipo1</Type>
-            <Type>tipo2</Type>
-            <Type>tipo3</Type>
-          </TypesContainer>
-        </ProfileInfo>
+          <ProfileInfo>
+            <Name>{pokemon.name}</Name>
+            <TypesContainer>
+              {pokemon.types.map((type) => (
+                <Type key={type}>{type}</Type>
+              ))}
+            </TypesContainer>
+          </ProfileInfo>
+        </LeftContainer>
 
         <ExperienceContainer>
-          <ExperienceValue>99</ExperienceValue>
+          <ExperienceValue>{pokemon.base_experience}</ExperienceValue>
           <ExperienceText>XP Base</ExperienceText>
         </ExperienceContainer>
 
@@ -117,9 +112,9 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ pokemon, favorited }) => {
 
       <AbilitiesLabel>Habilidades:</AbilitiesLabel>
       <AbilitiesContainer>
-        <Abilities>habilidade um grande</Abilities>
-        <Abilities>habilidade dois grande</Abilities>
-        <Abilities>habilidade três grande</Abilities>
+        {pokemon.abilities.map((ability) => (
+          <Abilities key={ability}>{ability}</Abilities>
+        ))}
       </AbilitiesContainer>
 
       <ButtonsContainer>

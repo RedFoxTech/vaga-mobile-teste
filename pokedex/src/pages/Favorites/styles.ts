@@ -5,7 +5,3 @@ export const Container = styled.View`
   flex: 1;
   background: ${colors.primary};
 `;
-
-export const PokemonList = styled.ScrollView`
-  margin-top: -40px;
-`;

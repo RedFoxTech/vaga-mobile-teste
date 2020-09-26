@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Alert, ScrollView } from 'react-native';
+import { Alert, FlatList } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { BorderlessButton } from 'react-native-gesture-handler';
@@ -7,7 +7,7 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import api from '../../services/api';
 
 import PageHeader from '../../components/PageHeader';
-import PokemonItem, { PokemonProps } from '../../components/PokemonItem';
+import PokemonItem, { PokemonBasicProps } from '../../components/PokemonItem';
 
 import {
   Container,
@@ -19,19 +19,17 @@ import {
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-interface PokemonResponse {
+interface PokemonsResponse {
+  next: string;
   results: Array<{
     name: string;
-    url: string;
   }>;
 }
 
-interface PokemonDetails {
+interface PokemonBasicResponse {
   id: number;
   name: string;
   base_experience: string;
-  height: number;
-  weight: number;
   sprites: {
     other: {
       'official-artwork': {
@@ -39,13 +37,6 @@ interface PokemonDetails {
       };
     };
   };
-  location_area_encounters: string;
-  stats: Array<{
-    base_stat: number;
-    stat: {
-      name: string;
-    };
-  }>;
   types: Array<{
     type: {
       name: string;
@@ -61,18 +52,19 @@ interface PokemonDetails {
 const PokemonList: React.FC = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [filtersVisible, setFiltersVisible] = useState(false);
-  const [pokemons, setPokemons] = useState<PokemonProps[]>([]);
+  const [pokemons, setPokemons] = useState<PokemonBasicProps[]>([]);
+  const [nextPage, setNextPage] = useState('');
 
   useEffect(() => {
     async function loadPokemons() {
       try {
-        const response = await api.get<PokemonResponse>('/pokemon');
-
-        const pokemonUrls = response.data.results.map((poke) => poke.url);
+        const { data } = await api.get<PokemonsResponse>('/pokemon');
 
         const pokemonsDetailed = await Promise.all(
-          pokemonUrls.map((url) =>
-            api.get<PokemonDetails>(url).then((resp) => resp.data),
+          data.results.map(({ name }) =>
+            api
+              .get<PokemonBasicResponse>(`/pokemon/${name}`)
+              .then((resp) => resp.data),
           ),
         );
 
@@ -80,23 +72,15 @@ const PokemonList: React.FC = () => {
           id: poke.id,
           name: poke.name,
           base_experience: poke.base_experience,
-          height: poke.height,
-          weight: poke.weight,
           avatar: poke.sprites.other['official-artwork'].front_default,
-          stats: poke.stats.map((pokeStat) => ({
-            stat_name: pokeStat.stat.name,
-            stat_power: pokeStat.base_stat,
-          })),
           types: poke.types.map((pokeType) => pokeType.type.name),
           abilities: poke.abilities.map(
             (pokeAbility) => pokeAbility.ability.name,
           ),
-          location_area_encounters: poke.location_area_encounters,
         }));
 
         setPokemons(pokemonsFormatted);
       } catch (err) {
-        console.log(err);
         Alert.alert('Oops, ocorreu um erro...', 'Verifique sua conexão');
       }
     }
@@ -111,7 +95,7 @@ const PokemonList: React.FC = () => {
       const favoritesPokemons = JSON.parse(response);
 
       const favoritesPokemonsIds = favoritesPokemons.map(
-        (pokemon: PokemonProps) => pokemon.id,
+        (pokemon: PokemonBasicProps) => pokemon.id,
       );
       setFavorites(favoritesPokemonsIds);
     }
@@ -158,22 +142,20 @@ const PokemonList: React.FC = () => {
         )}
       </PageHeader>
 
-      <ScrollView
-        style={{ marginTop: -40 }}
-        contentContainerStyle={{
-          paddingHorizontal: 16,
-          paddingBottom: 8,
-        }}
+      <FlatList
+        style={{ marginTop: -40, paddingHorizontal: 16 }}
         showsVerticalScrollIndicator={false}
-      >
-        {pokemons.map((pokemon: PokemonProps) => (
+        data={pokemons}
+        scrollEnabled
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => (
           <PokemonItem
-            key={pokemon.id}
-            pokemon={pokemon}
-            favorited={favorites.includes(pokemon.id)}
+            key={item.id}
+            pokemon={item}
+            favorited={favorites.includes(item.id)}
           />
-        ))}
-      </ScrollView>
+        )}
+      />
     </Container>
   );
 };

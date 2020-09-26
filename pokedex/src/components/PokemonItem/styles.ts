@@ -18,6 +18,11 @@ export const Container = styled.View`
   padding: 24px;
 `;
 
+export const LeftContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const Profile = styled.View`
   position: relative;
   flex-direction: row;
@@ -30,9 +35,12 @@ export const Avatar = styled.Image`
   height: 74px;
   border-radius: 37px;
   background-color: #eee;
+  margin-right: 16px;
 `;
 
-export const ProfileInfo = styled.View``;
+export const ProfileInfo = styled.View`
+  align-items: flex-start;
+`;
 
 export const Name = styled.Text`
   font-family: ${fonts.RobotoBold};
@@ -43,27 +51,27 @@ export const Name = styled.Text`
 
 export const TypesContainer = styled.View`
   flex-direction: row;
-  padding-right: 16px;
 `;
 
 export const Type = styled.Text`
   font-family: ${fonts.RobotoRegular};
   color: #6a6180;
-  font-size: 12px;
+  font-size: 14px;
   margin: 4px 2px 0px 2px;
 `;
 
 export const ExperienceContainer = styled.View`
   background: #fafafc;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 16px 0 0;
 `;
 
 export const ExperienceText = styled.Text`
   font-family: ${fonts.RobotoBold};
   color: ${colors.primaryVariant};
-  font-size: 14px;
+  font-size: 16px;
   margin-top: -12px;
+  align-self: flex-end;
 `;
 
 export const ExperienceValue = styled.Text`
@@ -97,7 +105,7 @@ export const AbilitiesContainer = styled.View`
 export const Abilities = styled.Text`
   font-family: ${fonts.RobotoRegular};
   color: #6a6180;
-  font-size: 12px;
+  font-size: 14px;
   margin: 4px 2px 0px 2px;
   border: 0.5px;
   border-radius: 8px;

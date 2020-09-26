@@ -18,13 +18,12 @@ export const Content = styled.View`
   border-width: 1px;
   border-color: #e6e6f0;
   border-radius: 8px;
-  margin: -60px 16px 16px 16px;
+  margin: -80px 16px 16px 16px;
   overflow: hidden;
-  padding: 24px;
+  padding: 48px 24px 24px;
 `;
 
 export const Profile = styled.View`
-  position: relative;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -43,7 +42,7 @@ export const ProfileInfo = styled.View``;
 export const Name = styled.Text`
   font-family: ${fonts.RobotoBold};
   color: #32264d;
-  font-size: 20px;
+  font-size: 24px;
   text-transform: capitalize;
 `;
 
@@ -55,20 +54,20 @@ export const TypesContainer = styled.View`
 export const Type = styled.Text`
   font-family: ${fonts.RobotoRegular};
   color: #6a6180;
-  font-size: 12px;
+  font-size: 16px;
   margin: 4px 2px 0px 2px;
 `;
 
 export const ExperienceContainer = styled.View`
   background: #fafafc;
-  align-items: center;
+  align-items: flex-end;
   padding: 0 16px;
 `;
 
 export const ExperienceText = styled.Text`
   font-family: ${fonts.RobotoBold};
   color: ${colors.primaryVariant};
-  font-size: 14px;
+  font-size: 16px;
   margin-top: -12px;
 `;
 
@@ -82,14 +81,14 @@ export const FavoriteButton = styled(RectButton)<FavoriteButtonProps>`
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: -12px;
-  top: -12px;
+  right: 16px;
+  top: 16px;
 `;
 
 export const Divider = styled.View`
   border-bottom-width: 0.5px;
   border-bottom-color: #6a6180;
-  margin-top: 8px;
+  margin-top: 16px;
 `;
 
 export const DetailsContainer = styled.View`
@@ -101,33 +100,26 @@ export const DetailsContainer = styled.View`
 export const DetailsLabel = styled.Text`
   font-family: ${fonts.RobotoMedium};
   color: #6a6180;
-  font-size: 14px;
+  font-size: 16px;
 `;
 
 export const DetailsText = styled.Text`
   font-family: ${fonts.RobotoRegular};
   color: #6a6180;
-  font-size: 12px;
-  margin: 4px 2px 0px 2px;
+  font-size: 16px;
 `;
 
 export const AbilitiesLabel = styled.Text`
   font-family: ${fonts.RobotoMedium};
   color: #6a6180;
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 8px;
-`;
-
-export const AbilitiesContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
-  overflow: hidden;
 `;
 
 export const Abilitiy = styled.Text`
   font-family: ${fonts.RobotoRegular};
   color: #6a6180;
-  font-size: 12px;
+  font-size: 16px;
   margin: 4px 2px 0px 2px;
   border: 0.5px;
   border-radius: 8px;
@@ -138,20 +130,14 @@ export const Abilitiy = styled.Text`
 export const StatsLabel = styled.Text`
   font-family: ${fonts.RobotoMedium};
   color: #6a6180;
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 8px;
-`;
-
-export const StatsContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
-  overflow: hidden;
 `;
 
 export const Stat = styled.Text`
   font-family: ${fonts.RobotoRegular};
   color: #6a6180;
-  font-size: 12px;
+  font-size: 16px;
   margin: 4px 2px 0px 2px;
   border: 0.5px;
   border-radius: 8px;
