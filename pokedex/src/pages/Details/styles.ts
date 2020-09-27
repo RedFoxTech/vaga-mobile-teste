@@ -1,12 +1,8 @@
-import { RectButton, RectButtonProperties } from 'react-native-gesture-handler';
+import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 import colors from '../../global/styles/colors';
 
 import fonts from '../../global/styles/fonts';
-
-interface FavoriteButtonProps extends RectButtonProperties {
-  isFavorited: boolean;
-}
 
 export const Container = styled.View`
   flex: 1;
@@ -29,6 +25,10 @@ export const Profile = styled.View`
   justify-content: space-between;
 `;
 
+export const EmptyAvatar = styled.View`
+  height: 80px;
+`;
+
 export const Avatar = styled.Image`
   width: 240px;
   height: 240px;
@@ -40,7 +40,7 @@ export const Avatar = styled.Image`
 export const ProfileInfo = styled.View``;
 
 export const Name = styled.Text`
-  font-family: ${fonts.RobotoBold};
+  font-family: ${fonts.Bold};
   color: #32264d;
   font-size: 24px;
   text-transform: capitalize;
@@ -52,7 +52,7 @@ export const TypesContainer = styled.View`
 `;
 
 export const Type = styled.Text`
-  font-family: ${fonts.RobotoRegular};
+  font-family: ${fonts.Regular};
   color: #6a6180;
   font-size: 16px;
   margin: 4px 2px 0px 2px;
@@ -65,19 +65,19 @@ export const ExperienceContainer = styled.View`
 `;
 
 export const ExperienceText = styled.Text`
-  font-family: ${fonts.RobotoBold};
+  font-family: ${fonts.Bold};
   color: ${colors.primaryVariant};
   font-size: 16px;
   margin-top: -12px;
 `;
 
 export const ExperienceValue = styled.Text`
-  font-family: ${fonts.RobotoBold};
+  font-family: ${fonts.Bold};
   color: ${colors.primaryVariant};
   font-size: 48px;
 `;
 
-export const FavoriteButton = styled(RectButton)<FavoriteButtonProps>`
+export const FavoriteButton = styled(RectButton)`
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -98,26 +98,26 @@ export const DetailsContainer = styled.View`
 `;
 
 export const DetailsLabel = styled.Text`
-  font-family: ${fonts.RobotoMedium};
+  font-family: ${fonts.Medium};
   color: #6a6180;
   font-size: 16px;
 `;
 
 export const DetailsText = styled.Text`
-  font-family: ${fonts.RobotoRegular};
+  font-family: ${fonts.Regular};
   color: #6a6180;
   font-size: 16px;
 `;
 
 export const AbilitiesLabel = styled.Text`
-  font-family: ${fonts.RobotoMedium};
+  font-family: ${fonts.Medium};
   color: #6a6180;
   font-size: 16px;
   margin-top: 8px;
 `;
 
 export const Abilitiy = styled.Text`
-  font-family: ${fonts.RobotoRegular};
+  font-family: ${fonts.Regular};
   color: #6a6180;
   font-size: 16px;
   margin: 4px 2px 0px 2px;
@@ -128,14 +128,14 @@ export const Abilitiy = styled.Text`
 `;
 
 export const StatsLabel = styled.Text`
-  font-family: ${fonts.RobotoMedium};
+  font-family: ${fonts.Medium};
   color: #6a6180;
   font-size: 16px;
   margin-top: 8px;
 `;
 
 export const Stat = styled.Text`
-  font-family: ${fonts.RobotoRegular};
+  font-family: ${fonts.Regular};
   color: #6a6180;
   font-size: 16px;
   margin: 4px 2px 0px 2px;
@@ -154,6 +154,6 @@ export const InfoButton = styled(RectButton)``;
 
 export const InfoButtonText = styled.Text`
   color: #04d361;
-  font-family: ${fonts.RobotoBold};
+  font-family: ${fonts.Bold};
   font-size: 16px;
 `;

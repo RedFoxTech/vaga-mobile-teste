@@ -27,17 +27,51 @@ export const LogoImage = styled.Image`
 `;
 
 export const HeaderRight = styled.View`
+  align-items: flex-end;
+`;
+
+export const FiltersButtonContainer = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-right: 4px;
+`;
+
+export const CleanFiltersContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+`;
+
+export const CleanFilterButtonText = styled.Text`
+  color: ${colors.red};
+  font-family: ${fonts.Regular};
+  font-size: 16px;
 `;
 
 export const Title = styled.Text`
-  font-family: ${fonts.RobotoBold};
+  font-family: ${fonts.Bold};
   color: #fff;
   font-size: 24px;
   line-height: 32px;
-  max-width: 320px;
-  margin: 0 30px;
+  max-width: 192px;
+  margin-left: 20px;
   text-transform: capitalize;
+`;
+
+export const FilterButtonText = styled.Text`
+  color: #fff;
+  font-family: ${fonts.Regular};
+  font-size: 16px;
+`;
+
+export const SearchForm = styled.View`
+  margin: 16px 0;
+`;
+
+export const InputGroup = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 24px;
 `;

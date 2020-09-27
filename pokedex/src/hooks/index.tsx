@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { AuthProvider } from './auth';
+import { FavoriteProvider } from './favorite';
 
 const AppProvider: React.FC = ({ children }) => (
-  <AuthProvider>{children}</AuthProvider>
+  <FavoriteProvider>{children}</FavoriteProvider>
 );
 
 export default AppProvider;

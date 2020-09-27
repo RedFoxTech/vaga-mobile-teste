@@ -1,12 +1,8 @@
-import { RectButton, RectButtonProperties } from 'react-native-gesture-handler';
+import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 import colors from '../../global/styles/colors';
 
 import fonts from '../../global/styles/fonts';
-
-interface FavoriteButtonProps extends RectButtonProperties {
-  isFavorited: boolean;
-}
 
 export const Container = styled.View`
   background: #fff;
@@ -43,7 +39,7 @@ export const ProfileInfo = styled.View`
 `;
 
 export const Name = styled.Text`
-  font-family: ${fonts.RobotoBold};
+  font-family: ${fonts.Bold};
   color: #32264d;
   font-size: 20px;
   text-transform: capitalize;
@@ -60,7 +56,7 @@ export const ExperienceContainer = styled.View`
 `;
 
 export const ExperienceText = styled.Text`
-  font-family: ${fonts.RobotoBold};
+  font-family: ${fonts.Bold};
   color: ${colors.primaryVariant};
   font-size: 16px;
   margin-top: -12px;
@@ -68,12 +64,12 @@ export const ExperienceText = styled.Text`
 `;
 
 export const ExperienceValue = styled.Text`
-  font-family: ${fonts.RobotoBold};
+  font-family: ${fonts.Bold};
   color: ${colors.primaryVariant};
   font-size: 48px;
 `;
 
-export const FavoriteButton = styled(RectButton)<FavoriteButtonProps>`
+export const FavoriteButton = styled(RectButton)`
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -82,7 +78,7 @@ export const FavoriteButton = styled(RectButton)<FavoriteButtonProps>`
 `;
 
 export const AbilitiesLabel = styled.Text`
-  font-family: ${fonts.RobotoMedium};
+  font-family: ${fonts.Medium};
   color: #6a6180;
   font-size: 14px;
   margin: 8px 0 0 8px;
@@ -96,7 +92,7 @@ export const AbilitiesContainer = styled.View`
 `;
 
 export const Abilities = styled.Text`
-  font-family: ${fonts.RobotoRegular};
+  font-family: ${fonts.Regular};
   color: #6a6180;
   font-size: 14px;
   margin: 4px 2px 0px 2px;
@@ -116,6 +112,6 @@ export const InfoButton = styled(RectButton)``;
 
 export const InfoButtonText = styled.Text`
   color: #04d361;
-  font-family: ${fonts.RobotoBold};
+  font-family: ${fonts.Bold};
   font-size: 16px;
 `;

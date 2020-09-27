@@ -33,7 +33,7 @@ const StudyTabs: React.FC = () => {
           height: 20,
         },
         labelStyle: {
-          fontFamily: `${fonts.RobotoBold}`,
+          fontFamily: `${fonts.Bold}`,
           fontSize: 16,
           marginLeft: 16,
         },

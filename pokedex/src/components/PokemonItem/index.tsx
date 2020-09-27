@@ -1,5 +1,4 @@
-import React, { useCallback, useState } from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
+import React, { useCallback } from 'react';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 
 import { useNavigation } from '@react-navigation/native';
@@ -24,54 +23,55 @@ import {
   InfoButton,
   InfoButtonText,
 } from './styles';
-import PokemonType, { PokemonsTypesOptions } from '../PokemonType';
+import PokemonType from '../PokemonType';
 
 export interface PokemonBasicProps {
   id: number;
   name: string;
   base_experience: string;
   avatar: string;
-  types: Array<PokemonsTypesOptions>;
+  types: Array<
+    | 'normal'
+    | 'fighting'
+    | 'flying'
+    | 'poison'
+    | 'ground'
+    | 'rock'
+    | 'bug'
+    | 'ghost'
+    | 'steel'
+    | 'fire'
+    | 'water'
+    | 'grass'
+    | 'electric'
+    | 'psychic'
+    | 'ice'
+    | 'dragon'
+    | 'dark'
+    | 'fairy'
+    | 'unknown'
+    | 'shadow'
+  >;
   abilities: Array<string>;
+  favorited: boolean;
 }
 
 interface PokemonItemProps {
   pokemon: PokemonBasicProps;
   favorited: boolean;
+  toggleFavorite(): void;
 }
 
-const PokemonItem: React.FC<PokemonItemProps> = ({ pokemon, favorited }) => {
+const PokemonItem: React.FC<PokemonItemProps> = ({
+  pokemon,
+  favorited,
+  toggleFavorite,
+}) => {
   const { navigate } = useNavigation();
 
-  const [isFavorited, setIsFavorited] = useState(favorited);
-
   const handleNavigateToDetails = useCallback(async () => {
-    navigate('Details', { id: pokemon.id, favorited });
-  }, [favorited, navigate, pokemon]);
-
-  const handleToggleFavorite = useCallback(async () => {
-    setIsFavorited(!isFavorited);
-
-    const favorites = await AsyncStorage.getItem('favorites');
-
-    let favoritesArray = [];
-
-    if (favorites) {
-      favoritesArray = JSON.parse(favorites);
-    }
-
-    if (isFavorited) {
-      const favoriteIndex = favoritesArray.findIndex(
-        (pokemonItem: PokemonBasicProps) => pokemonItem.id === pokemon.id,
-      );
-
-      favoritesArray.splice(favoriteIndex, 1);
-    } else {
-      favoritesArray.push(pokemon);
-    }
-
-    await AsyncStorage.setItem('favorites', JSON.stringify(favoritesArray));
-  }, [isFavorited, pokemon]);
+    navigate('Details', { id: pokemon.id });
+  }, [navigate, pokemon]);
 
   return (
     <Container>
@@ -98,12 +98,9 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ pokemon, favorited }) => {
           <ExperienceText>XP Base</ExperienceText>
         </ExperienceContainer>
 
-        <FavoriteButton
-          isFavorited={isFavorited}
-          onPress={handleToggleFavorite}
-        >
+        <FavoriteButton onPress={toggleFavorite}>
           <MaterialIcon
-            name={isFavorited ? 'favorite' : 'favorite-border'}
+            name={favorited ? 'favorite' : 'favorite-border'}
             size={24}
             color={colors.primaryVariant}
           />

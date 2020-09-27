@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
 
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Alert, ScrollView } from 'react-native';
+import LocationsModal from '../../components/LocationsModal';
+import { useFavorite } from '../../hooks/favorite';
 import api from '../../services/api';
 import colors from '../../global/styles/colors';
 import PageHeader from '../../components/PageHeader';
@@ -13,10 +14,10 @@ import {
   Content,
   Profile,
   Avatar,
+  EmptyAvatar,
   ProfileInfo,
   Name,
   TypesContainer,
-  Type,
   Divider,
   DetailsContainer,
   DetailsLabel,
@@ -33,11 +34,7 @@ import {
   InfoButton,
   InfoButtonText,
 } from './styles';
-
-interface ParamsProps {
-  id: number;
-  favorited: boolean;
-}
+import PokemonType from '../../components/PokemonType';
 
 interface PokemonDetailedResponse {
   id: number;
@@ -61,7 +58,27 @@ interface PokemonDetailedResponse {
   }>;
   types: Array<{
     type: {
-      name: string;
+      name:
+        | 'normal'
+        | 'fighting'
+        | 'flying'
+        | 'poison'
+        | 'ground'
+        | 'rock'
+        | 'bug'
+        | 'ghost'
+        | 'steel'
+        | 'fire'
+        | 'water'
+        | 'grass'
+        | 'electric'
+        | 'psychic'
+        | 'ice'
+        | 'dragon'
+        | 'dark'
+        | 'fairy'
+        | 'unknown'
+        | 'shadow';
     };
   }>;
   abilities: Array<{
@@ -82,23 +99,60 @@ export interface PokemonDetailedProps {
     stat_name: string;
     stat_power: number;
   }>;
-  types: Array<string>;
+  types: Array<
+    | 'normal'
+    | 'fighting'
+    | 'flying'
+    | 'poison'
+    | 'ground'
+    | 'rock'
+    | 'bug'
+    | 'ghost'
+    | 'steel'
+    | 'fire'
+    | 'water'
+    | 'grass'
+    | 'electric'
+    | 'psychic'
+    | 'ice'
+    | 'dragon'
+    | 'dark'
+    | 'fairy'
+    | 'unknown'
+    | 'shadow'
+  >;
   abilities: Array<string>;
+  favorited: boolean;
   location_area_encounters: string;
 }
 
+interface LocationsResponse {
+  location_area: {
+    name: string;
+  };
+}
+
+interface ParamsProps {
+  id: number;
+}
+
 const Details: React.FC = () => {
-  const { params } = useRoute<
+  const { goBack } = useNavigation();
+
+  const { favorites, toggleFavorite } = useFavorite();
+
+  const { params: routeParams } = useRoute<
     RouteProp<Record<string, ParamsProps | undefined>, string>
   >();
   const [pokemon, setPokemon] = useState<PokemonDetailedProps>();
-  const [isFavorited, setIsFavorited] = useState(params?.favorited || false);
+  const [locations, setLocations] = useState<string[]>([]);
+  const [locationsModalVisible, setLocationsModalVisible] = useState(false);
 
   useEffect(() => {
     async function loadPokemons() {
       try {
         const { data } = await api.get<PokemonDetailedResponse>(
-          `/pokemon/${params?.id}`,
+          `/pokemon/${routeParams?.id}`,
         );
 
         const pokemonFormatted = {
@@ -116,6 +170,7 @@ const Details: React.FC = () => {
           abilities: data.abilities.map(
             (pokeAbility) => pokeAbility.ability.name,
           ),
+          favorited: !!favorites.find((favorite) => favorite.id === data.id),
           location_area_encounters: data.location_area_encounters,
         };
 
@@ -126,48 +181,53 @@ const Details: React.FC = () => {
     }
 
     loadPokemons();
-  }, [params?.id]);
+  }, [favorites, routeParams?.id]);
 
   const handleToggleFavorite = useCallback(async () => {
-    setIsFavorited(!isFavorited);
+    if (pokemon) {
+      toggleFavorite(pokemon);
 
-    const favorites = await AsyncStorage.getItem('favorites');
-
-    let favoritesArray = [];
-
-    if (favorites) {
-      favoritesArray = JSON.parse(favorites);
+      setPokemon({ ...pokemon, favorited: !pokemon.favorited });
     }
+  }, [pokemon, toggleFavorite]);
 
-    if (isFavorited) {
-      const favoriteIndex = favoritesArray.findIndex(
-        (pokemonItem: PokemonDetailedProps) => pokemonItem.id === pokemon?.id,
-      );
+  const handleLocations = useCallback(async () => {
+    const response = await api.get<LocationsResponse[]>(
+      `/pokemon/${pokemon?.name}/encounters`,
+    );
 
-      favoritesArray.splice(favoriteIndex, 1);
-    } else {
-      favoritesArray.push(pokemon);
-    }
+    const locationNames = response.data.map(
+      (location) => location.location_area.name,
+    );
 
-    await AsyncStorage.setItem('favorites', JSON.stringify(favoritesArray));
-  }, [isFavorited, pokemon]);
+    setLocations(locationNames);
+    setLocationsModalVisible(true);
+  }, [pokemon?.name]);
 
+  console.log(locationsModalVisible);
   return (
     <Container>
       {pokemon && (
         <>
-          <PageHeader title={pokemon.name} />
+          <PageHeader
+            title={pokemon.name}
+            hasFilter={false}
+            onPressLeftButton={goBack}
+          />
 
           <ScrollView
             style={{ marginTop: -54 }}
+            showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
             contentContainerStyle={{ flexGrow: 1 }}
           >
-            <Avatar
-              source={{
-                uri: pokemon.avatar,
-              }}
-            />
+            {(pokemon.avatar && (
+              <Avatar
+                source={{
+                  uri: pokemon.avatar,
+                }}
+              />
+            )) || <EmptyAvatar />}
 
             <Content>
               <Profile>
@@ -175,7 +235,9 @@ const Details: React.FC = () => {
                   <Name>{pokemon.name}</Name>
                   <TypesContainer>
                     {pokemon.types.map((type) => (
-                      <Type key={type}>{type}</Type>
+                      <PokemonType key={type} type={type}>
+                        {type}
+                      </PokemonType>
                     ))}
                   </TypesContainer>
                 </ProfileInfo>
@@ -186,12 +248,9 @@ const Details: React.FC = () => {
                 </ExperienceContainer>
               </Profile>
 
-              <FavoriteButton
-                isFavorited={isFavorited}
-                onPress={handleToggleFavorite}
-              >
+              <FavoriteButton onPress={handleToggleFavorite}>
                 <MaterialIcon
-                  name={isFavorited ? 'favorite' : 'favorite-border'}
+                  name={pokemon.favorited ? 'favorite' : 'favorite-border'}
                   size={32}
                   color={colors.primaryVariant}
                 />
@@ -223,7 +282,7 @@ const Details: React.FC = () => {
               ))}
 
               <ButtonsContainer>
-                <InfoButton>
+                <InfoButton onPress={handleLocations}>
                   <InfoButtonText>
                     Locais que pode ser encontrado
                   </InfoButtonText>
@@ -231,6 +290,12 @@ const Details: React.FC = () => {
               </ButtonsContainer>
             </Content>
           </ScrollView>
+          <LocationsModal
+            visible={locationsModalVisible}
+            closeModal={() => setLocationsModalVisible(false)}
+            pokemon={pokemon}
+            locations={locations}
+          />
         </>
       )}
     </Container>

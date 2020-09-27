@@ -1,5 +1,5 @@
 export default {
-  RobotoRegular: 'Roboto-Regular',
-  RobotoMedium: 'Roboto-Medium',
-  RobotoBold: 'Roboto-Bold',
+  Regular: 'Roboto-Regular',
+  Medium: 'Roboto-Medium',
+  Bold: 'Roboto-Bold',
 };

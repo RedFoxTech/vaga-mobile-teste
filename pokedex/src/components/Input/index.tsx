@@ -1,24 +1,32 @@
 import React from 'react';
 import { TextInputProps } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
+import colors from '../../global/styles/colors';
 
-import { Container, TextInput, Icon } from './styles';
+import { Container, InputField, Label, TextInput } from './styles';
 
 interface IInputProps extends TextInputProps {
-  selected: string;
-  icon?: string;
+  label: string;
+  clearField(): void;
 }
 
-const Input: React.FC<IInputProps> = ({ selected, icon, style, ...rest }) => {
+const Input: React.FC<IInputProps> = ({
+  label,
+  clearField,
+  style,
+  ...rest
+}) => {
   return (
-    <Container style={style}>
-      <Icon name={icon || ''} size={20} color="#FFF" />
+    <Container>
+      <Label>{label}</Label>
 
-      <TextInput
-        keyboardAppearance="dark"
-        placeholderTextColor="#999"
-        defaultValue={selected}
-        {...rest}
-      />
+      <InputField style={style}>
+        <TextInput placeholderTextColor="#999" {...rest} />
+        <TouchableWithoutFeedback onPress={clearField}>
+          <MaterialIcon name="clear" size={24} color={colors.primary} />
+        </TouchableWithoutFeedback>
+      </InputField>
     </Container>
   );
 };

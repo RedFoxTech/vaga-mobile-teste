@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 import fonts from '../../global/styles/fonts';
 
-export interface PokemonTypeTextProps extends Text {
+interface PokemonTypeTextProps extends Text {
   type:
     | 'normal'
     | 'fighting'
@@ -50,7 +50,7 @@ const typeColors = {
 };
 
 export const TypeText = styled.Text<PokemonTypeTextProps>`
-  font-family: ${fonts.RobotoMedium};
+  font-family: ${fonts.Medium};
   color: #fff;
   font-size: 13px;
   margin: 4px 2px 0px 2px;

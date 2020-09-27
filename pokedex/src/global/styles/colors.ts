@@ -4,7 +4,7 @@ export default {
 
   purple: '#8257e5',
 
-  title: '#232129',
+  title: '#32264d',
 
   blue: '#4b77be',
   blueVariant: '#446cb3',

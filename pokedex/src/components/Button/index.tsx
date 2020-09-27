@@ -1,5 +1,4 @@
 import React from 'react';
-import { ActivityIndicator } from 'react-native';
 import { RectButtonProperties } from 'react-native-gesture-handler';
 
 import { Container, ButtonText } from './styles';
@@ -10,9 +9,9 @@ interface ButtonProps extends RectButtonProperties {
 }
 
 const Button: React.FC<ButtonProps> = ({ title, loading, ...rest }) => (
-  <Container {...rest}>
+  <Container enabled={!loading} {...rest}>
     {loading ? (
-      <ActivityIndicator animating={loading} size="large" color="#FFF" />
+      <ButtonText>Carregando...</ButtonText>
     ) : (
       <ButtonText>{title}</ButtonText>
     )}

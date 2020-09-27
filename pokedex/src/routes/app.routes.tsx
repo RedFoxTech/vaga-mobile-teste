@@ -20,20 +20,8 @@ const AppRoutes: React.FC = () => {
       }}
     >
       <App.Screen name="Landing" component={Landing} />
-      <App.Screen
-        name="Dashboard"
-        component={Dashboard}
-        options={{
-          title: 'Pokedex',
-        }}
-      />
-      <App.Screen
-        name="Details"
-        component={Details}
-        options={{
-          headerShown: false,
-        }}
-      />
+      <App.Screen name="Dashboard" component={Dashboard} />
+      <App.Screen name="Details" component={Details} />
     </App.Navigator>
   );
 };
