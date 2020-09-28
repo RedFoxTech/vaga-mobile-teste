@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
 } from 'react-native-gesture-handler';
 
-import { ActivityIndicator, Alert, Keyboard } from 'react-native';
-import api from '../../services/api';
+import { ActivityIndicator, Keyboard } from 'react-native';
+import { usePokemons } from '../../hooks/pokemons';
 import logoImg from '../../assets/images/pokeball.png';
 import colors from '../../global/styles/colors';
 
@@ -30,14 +30,6 @@ import {
   InputGroup,
 } from './styles';
 
-interface TypesResponse {
-  results: [
-    {
-      name: string;
-    },
-  ];
-}
-
 export interface FilterOptions {
   typeFilter: string | undefined;
   nameFilter: string | undefined;
@@ -48,7 +40,6 @@ interface PageHeaderProps {
   loading?: boolean;
   hasFilter?: boolean;
   clearFilters?(): void;
-  onFiltersActive?(isActive: boolean): void;
   filtersSubmit?(filter: FilterOptions): void;
   onPressLeftButton(): void;
 }
@@ -58,29 +49,19 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   loading = false,
   hasFilter = true,
   clearFilters = () => {}, //eslint-disable-line
-  onFiltersActive = () => {}, //eslint-disable-line
   filtersSubmit = () => {}, //eslint-disable-line
   onPressLeftButton,
 }) => {
+  const { types } = usePokemons();
+
   const [filtersVisible, setFiltersVisible] = useState(false);
-  const [cleanFiltersVisible, setCleanFiltersVisible] = useState(false);
+  const [clearFiltersVisible, setClearFiltersVisible] = useState(false);
   const [typeFilter, setTypeFilter] = useState<string | undefined>(undefined);
   const [nameFilter, setNameFilter] = useState<string | undefined>(undefined);
-  const [types, setTypes] = useState<string[]>([]);
 
   const handleToggleFiltersVisible = useCallback(async () => {
     setFiltersVisible((prevState) => !prevState);
-
-    if (types.length <= 0) {
-      try {
-        const { data } = await api.get<TypesResponse>('/type');
-
-        setTypes(data.results.map((t) => t.name));
-      } catch (err) {
-        Alert.alert('Oops, ocorreu um erro...', 'Verifique sua conexão');
-      }
-    }
-  }, [types]);
+  }, []);
 
   const handleTypeFilterChange = useCallback((value: string) => {
     setNameFilter(undefined);
@@ -95,52 +76,42 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   }, []);
 
   const handleClearFilters = useCallback(() => {
-    setCleanFiltersVisible(false);
-    onFiltersActive(false);
+    setClearFiltersVisible(false);
 
     clearFilters();
 
     setTypeFilter(undefined);
     setNameFilter(undefined);
-  }, [clearFilters, onFiltersActive]);
+  }, [clearFilters]);
 
   const handleClearTypeFilter = useCallback(() => {
-    if (cleanFiltersVisible) {
-      setCleanFiltersVisible(false);
-      onFiltersActive(false);
+    if (clearFiltersVisible) {
+      setClearFiltersVisible(false);
       clearFilters();
     }
 
     setTypeFilter(undefined);
-  }, [cleanFiltersVisible, clearFilters, onFiltersActive]);
+  }, [clearFiltersVisible, clearFilters]);
 
   const handleClearNameFilter = useCallback(() => {
-    if (cleanFiltersVisible) {
-      setCleanFiltersVisible(false);
-      onFiltersActive(false);
+    if (clearFiltersVisible) {
+      setClearFiltersVisible(false);
       clearFilters();
     }
 
     setNameFilter(undefined);
-  }, [cleanFiltersVisible, clearFilters, onFiltersActive]);
+  }, [clearFiltersVisible, clearFilters]);
 
   const handleFiltersSubmit = useCallback(() => {
     if (typeFilter || nameFilter) {
       handleToggleFiltersVisible();
-      setCleanFiltersVisible(true);
-      onFiltersActive(true);
+      setClearFiltersVisible(true);
     }
 
     Keyboard.dismiss();
 
     filtersSubmit({ typeFilter, nameFilter });
-  }, [
-    filtersSubmit,
-    handleToggleFiltersVisible,
-    nameFilter,
-    onFiltersActive,
-    typeFilter,
-  ]);
+  }, [filtersSubmit, handleToggleFiltersVisible, nameFilter, typeFilter]);
 
   return (
     <Container>
@@ -179,7 +150,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
               </BorderlessButton>
             </FiltersButtonContainer>
 
-            {cleanFiltersVisible && (
+            {clearFiltersVisible && (
               <CleanFiltersContainer>
                 <TouchableOpacity
                   activeOpacity={0.6}

@@ -4,7 +4,7 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { Alert, ScrollView } from 'react-native';
 import LocationsModal from '../../components/LocationsModal';
-import { useFavorite } from '../../hooks/favorite';
+import { usePokemons } from '../../hooks/pokemons';
 import api from '../../services/api';
 import colors from '../../global/styles/colors';
 import PageHeader from '../../components/PageHeader';
@@ -58,27 +58,7 @@ interface PokemonDetailedResponse {
   }>;
   types: Array<{
     type: {
-      name:
-        | 'normal'
-        | 'fighting'
-        | 'flying'
-        | 'poison'
-        | 'ground'
-        | 'rock'
-        | 'bug'
-        | 'ghost'
-        | 'steel'
-        | 'fire'
-        | 'water'
-        | 'grass'
-        | 'electric'
-        | 'psychic'
-        | 'ice'
-        | 'dragon'
-        | 'dark'
-        | 'fairy'
-        | 'unknown'
-        | 'shadow';
+      name: string;
     };
   }>;
   abilities: Array<{
@@ -99,28 +79,7 @@ export interface PokemonDetailedProps {
     stat_name: string;
     stat_power: number;
   }>;
-  types: Array<
-    | 'normal'
-    | 'fighting'
-    | 'flying'
-    | 'poison'
-    | 'ground'
-    | 'rock'
-    | 'bug'
-    | 'ghost'
-    | 'steel'
-    | 'fire'
-    | 'water'
-    | 'grass'
-    | 'electric'
-    | 'psychic'
-    | 'ice'
-    | 'dragon'
-    | 'dark'
-    | 'fairy'
-    | 'unknown'
-    | 'shadow'
-  >;
+  types: Array<string>;
   abilities: Array<string>;
   favorited: boolean;
   location_area_encounters: string;
@@ -139,12 +98,14 @@ interface ParamsProps {
 const Details: React.FC = () => {
   const { goBack } = useNavigation();
 
-  const { favorites, toggleFavorite } = useFavorite();
+  const { favorites, toggleFavorite } = usePokemons();
 
   const { params: routeParams } = useRoute<
     RouteProp<Record<string, ParamsProps | undefined>, string>
   >();
-  const [pokemon, setPokemon] = useState<PokemonDetailedProps>();
+  const [pokemon, setPokemon] = useState<PokemonDetailedProps>(
+    {} as PokemonDetailedProps,
+  );
   const [locations, setLocations] = useState<string[]>([]);
   const [locationsModalVisible, setLocationsModalVisible] = useState(false);
 
@@ -170,7 +131,7 @@ const Details: React.FC = () => {
           abilities: data.abilities.map(
             (pokeAbility) => pokeAbility.ability.name,
           ),
-          favorited: !!favorites.find((favorite) => favorite.id === data.id),
+          favorited: favorites.includes(data.id),
           location_area_encounters: data.location_area_encounters,
         };
 
@@ -185,7 +146,7 @@ const Details: React.FC = () => {
 
   const handleToggleFavorite = useCallback(async () => {
     if (pokemon) {
-      toggleFavorite(pokemon);
+      toggleFavorite(pokemon.id);
 
       setPokemon({ ...pokemon, favorited: !pokemon.favorited });
     }
@@ -204,10 +165,9 @@ const Details: React.FC = () => {
     setLocationsModalVisible(true);
   }, [pokemon?.name]);
 
-  console.log(locationsModalVisible);
   return (
     <Container>
-      {pokemon && (
+      {!!pokemon.id && (
         <>
           <PageHeader
             title={pokemon.name}

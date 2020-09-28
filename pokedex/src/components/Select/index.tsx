@@ -46,7 +46,7 @@ const Select: React.FC<SelectProps> = ({
     (item) => {
       setQuery(item);
 
-      onSelectValue(item);
+      onSelectValue(item); // TODO TEXTTRANSFORM CAPITALIZE
     },
     [onSelectValue],
   );

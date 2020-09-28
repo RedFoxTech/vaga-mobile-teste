@@ -30,41 +30,18 @@ export interface PokemonBasicProps {
   name: string;
   base_experience: string;
   avatar: string;
-  types: Array<
-    | 'normal'
-    | 'fighting'
-    | 'flying'
-    | 'poison'
-    | 'ground'
-    | 'rock'
-    | 'bug'
-    | 'ghost'
-    | 'steel'
-    | 'fire'
-    | 'water'
-    | 'grass'
-    | 'electric'
-    | 'psychic'
-    | 'ice'
-    | 'dragon'
-    | 'dark'
-    | 'fairy'
-    | 'unknown'
-    | 'shadow'
-  >;
+  types: Array<string>;
   abilities: Array<string>;
   favorited: boolean;
 }
 
 interface PokemonItemProps {
   pokemon: PokemonBasicProps;
-  favorited: boolean;
   toggleFavorite(): void;
 }
 
 const PokemonItem: React.FC<PokemonItemProps> = ({
   pokemon,
-  favorited,
   toggleFavorite,
 }) => {
   const { navigate } = useNavigation();
@@ -100,7 +77,7 @@ const PokemonItem: React.FC<PokemonItemProps> = ({
 
         <FavoriteButton onPress={toggleFavorite}>
           <MaterialIcon
-            name={favorited ? 'favorite' : 'favorite-border'}
+            name={pokemon.favorited ? 'favorite' : 'favorite-border'}
             size={24}
             color={colors.primaryVariant}
           />

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { FavoriteProvider } from './favorite';
+import { PokemonsProvider } from './pokemons';
 
 const AppProvider: React.FC = ({ children }) => (
-  <FavoriteProvider>{children}</FavoriteProvider>
+  <PokemonsProvider>{children}</PokemonsProvider>
 );
 
 export default AppProvider;

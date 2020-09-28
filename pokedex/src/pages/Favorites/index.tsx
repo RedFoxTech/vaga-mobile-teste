@@ -1,53 +1,135 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
-import { FlatList } from 'react-native';
+import { ActivityIndicator, Alert, FlatList } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import colors from '../../global/styles/colors';
 import PageHeader, { FilterOptions } from '../../components/PageHeader';
-import PokemonItem from '../../components/PokemonItem';
-import { useFavorite } from '../../hooks/favorite';
+import PokemonItem, { PokemonBasicProps } from '../../components/PokemonItem';
+import { usePokemons } from '../../hooks/pokemons';
 import { Container, EmptyView, EmptyText } from './styles';
+import api from '../../services/api';
+
+interface PokemonBasicResponse {
+  id: number;
+  name: string;
+  base_experience: string;
+  sprites: {
+    other: {
+      'official-artwork': {
+        front_default: string;
+      };
+    };
+  };
+  types: Array<{
+    type: {
+      name: string;
+    };
+  }>;
+  abilities: Array<{
+    ability: {
+      name: string;
+    };
+  }>;
+}
 
 const Favorites: React.FC = () => {
   const { navigate } = useNavigation();
 
-  const { favorites, toggleFavorite } = useFavorite();
+  const { favorites, toggleFavorite } = usePokemons();
 
-  const [pokemons, setPokemons] = useState(favorites);
+  const [pokemons, setPokemons] = useState<PokemonBasicProps[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [filtering, setFiltering] = useState(false);
+  const [hasFiltersActive, setHasFiltersActive] = useState(false);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (pokemons.length > 0) {
+        setPokemons(pokemons.filter((poke) => favorites.includes(poke.id)));
+      }
+    }, [favorites]),//eslint-disable-line
+  );
+
+  const loadPokemons = useCallback(
+    async (firstLoad = true) => {
+      if (firstLoad) {
+        setLoading(true);
+      } else {
+        setFiltering(true);
+      }
+      try {
+        const favoritesDetails = await Promise.all(
+          favorites.map((favoriteId) =>
+            api
+              .get<PokemonBasicResponse>(`/pokemon/${favoriteId}`)
+              .then((resp) => resp.data),
+          ),
+        );
+
+        const pokemonsFormatted = favoritesDetails.map((poke) => ({
+          id: poke.id,
+          name: poke.name,
+          base_experience: poke.base_experience,
+          avatar: poke.sprites.other['official-artwork'].front_default,
+          types: poke.types.map((pokeType) => pokeType.type.name),
+          abilities: poke.abilities.map(
+            (pokeAbility) => pokeAbility.ability.name,
+          ),
+          favorited: true,
+        }));
+
+        setPokemons(pokemonsFormatted);
+      } catch (err) {
+        Alert.alert('Oops, ocorreu um erro...', 'Verifique sua conexão');
+      } finally {
+        setLoading(false);
+        setFiltering(false);
+      }
+    },
+    [favorites],
+  );
+
+  useEffect(() => {
+    if (!hasFiltersActive) {
+      loadPokemons();
+    }
+  }, [hasFiltersActive]);//eslint-disable-line
 
   const handleFilterByName = useCallback(
     (nameFilter: string) => {
-      const foundPokemon = favorites.find(
-        (favorite) => favorite.name === nameFilter,
+      const foundPokemon = pokemons.find(
+        (pokemon) => pokemon.name === nameFilter,
       );
-
       if (foundPokemon) {
         setPokemons([foundPokemon]);
       } else {
         setPokemons([]);
       }
     },
-    [favorites],
+    [pokemons],
   );
 
   const handleFilterByType = useCallback(
-    (typeFilter) => {
-      const foundPokemons = favorites.filter((favorite) =>
-        favorite.types.includes(typeFilter),
+    (typeFilter: string) => {
+      const foundPokemons = pokemons.filter((pokemon) =>
+        pokemon.types.includes(typeFilter),
       );
-
       setPokemons(foundPokemons);
     },
-    [favorites],
+    [pokemons],
   );
 
   const handleClearFilters = useCallback(() => {
-    setPokemons(favorites);
-  }, [favorites]);
+    setHasFiltersActive(false);
+
+    loadPokemons(false);
+  }, [loadPokemons]);
 
   const handleFiltersSubmit = useCallback(
     (filters: FilterOptions) => {
+      setHasFiltersActive(true);
+
       if (filters.nameFilter) {
         handleFilterByName(filters.nameFilter.toLowerCase());
       } else if (filters.typeFilter) {
@@ -58,20 +140,23 @@ const Favorites: React.FC = () => {
   );
 
   const handleToggleFavorite = useCallback(
-    (item) => {
-      toggleFavorite(item);
+    (itemId) => {
+      toggleFavorite(itemId);
 
-      setPokemons((prevState) =>
-        prevState.filter((favorite) => favorite.id !== item.id),
+      const updatedPokemons = pokemons.filter(
+        (pokemon) => pokemon.id !== itemId,
       );
+
+      setPokemons(updatedPokemons);
     },
-    [toggleFavorite],
+    [pokemons, toggleFavorite],
   );
 
   return (
     <Container>
       <PageHeader
         title="Meus pokémons favoritos"
+        loading={filtering}
         filtersSubmit={(filters) => handleFiltersSubmit(filters)}
         clearFilters={handleClearFilters}
         onPressLeftButton={() => navigate('Landing')}
@@ -88,12 +173,20 @@ const Favorites: React.FC = () => {
             <PokemonItem
               key={item.id}
               pokemon={item}
-              toggleFavorite={() => handleToggleFavorite(item)}
-              favorited
+              toggleFavorite={() => handleToggleFavorite(item.id)}
             />
           )}
         />
       )) ||
+        (loading && (
+          <EmptyView style={{ justifyContent: 'center' }}>
+            <ActivityIndicator
+              animating={loading}
+              size="large"
+              color={colors.primaryVariant}
+            />
+          </EmptyView>
+        )) ||
         (favorites.length > 0 && (
           <EmptyView>
             <EmptyText>

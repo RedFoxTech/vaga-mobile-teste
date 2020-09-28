@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 import fonts from '../../global/styles/fonts';
 
-interface PokemonTypeTextProps extends Text {
+interface PokemonTypeTextProps {
   type:
     | 'normal'
     | 'fighting'

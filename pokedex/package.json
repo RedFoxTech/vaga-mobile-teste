@@ -20,7 +20,7 @@
     "axios": "^0.19.2",
     "axios-mock-adapter": "^1.18.1",
     "react": "16.13.1",
-    "react-native": "0.63.2",
+    "react-native": "^0.63.2",
     "react-native-autocomplete-input": "^4.2.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-reanimated": "^1.9.0",

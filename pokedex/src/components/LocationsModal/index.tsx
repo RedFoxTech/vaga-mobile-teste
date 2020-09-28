@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Modal, ModalBaseProps } from 'react-native';
+import { FlatList, Modal, ModalBaseProps } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import { PokemonDetailedProps } from 'src/pages/Details';
 import colors from '../../global/styles/colors';
@@ -53,10 +53,15 @@ const LocationsModal: React.FC<LocationsModalProps> = ({
           <Divider />
 
           <LocationsLabel>Locais onde pode ser encontrado:</LocationsLabel>
-          {(locations.length > 0 &&
-            locations.map((location) => (
-              <Location key={location}>{location}</Location>
-            ))) || (
+          {(locations.length > 0 && (
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              data={locations}
+              scrollEnabled
+              keyExtractor={(item) => item}
+              renderItem={({ item }) => <Location key={item}>{item}</Location>}
+            />
+          )) || (
             <EmptyText>
               Oops... Nenhuma localização específica conhecida.
             </EmptyText>
