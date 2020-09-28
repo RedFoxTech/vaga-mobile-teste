@@ -73,7 +73,7 @@ const PokemonsProvider: React.FC = ({ children }) => {
       if (pokemons) {
         const loadedData = JSON.parse(pokemons);
 
-        if (loadedData.names) {
+        if (loadedData.names?.lenght > 0 && loadedData.types?.lenght > 0) {
           setData(loadedData);
         } else {
           const response = await Promise.all([
@@ -98,7 +98,6 @@ const PokemonsProvider: React.FC = ({ children }) => {
         }
       }
     }
-
     if (data.names.length <= 0 || data.types.length <= 0) {
       loadData();
     }

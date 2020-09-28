@@ -11,7 +11,6 @@ import { usePokemons } from '../../hooks/pokemons';
 import logoImg from '../../assets/images/pokeball.png';
 import colors from '../../global/styles/colors';
 
-import Input from '../Input';
 import Button from '../Button';
 import Select from '../Select';
 
@@ -52,7 +51,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   filtersSubmit = () => {}, //eslint-disable-line
   onPressLeftButton,
 }) => {
-  const { types } = usePokemons();
+  const { types, names } = usePokemons();
 
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [clearFiltersVisible, setClearFiltersVisible] = useState(false);
@@ -177,13 +176,14 @@ const PageHeader: React.FC<PageHeaderProps> = ({
               options={types}
               selectedValue={typeFilter}
               onSelectValue={handleTypeFilterChange}
-              clearField={handleClearTypeFilter}
+              onClearField={handleClearTypeFilter}
             />
-            <Input
-              label="Nome"
-              value={nameFilter}
-              onChangeText={handleNameFilterChange}
-              clearField={handleClearNameFilter}
+            <Select
+              label="Name"
+              options={names}
+              selectedValue={nameFilter}
+              onSelectValue={handleNameFilterChange}
+              onClearField={handleClearNameFilter}
             />
           </InputGroup>
 

@@ -19,7 +19,7 @@ interface SelectProps {
   options: Array<string>;
   selectedValue: string | undefined;
   onSelectValue(value: string | undefined): void;
-  clearField(): void;
+  onClearField(): void;
 }
 
 const Select: React.FC<SelectProps> = ({
@@ -27,7 +27,7 @@ const Select: React.FC<SelectProps> = ({
   options,
   selectedValue,
   onSelectValue,
-  clearField,
+  onClearField,
 }) => {
   const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
   const [query, setQuery] = useState(selectedValue);
@@ -46,17 +46,17 @@ const Select: React.FC<SelectProps> = ({
     (item) => {
       setQuery(item);
 
-      onSelectValue(item); // TODO TEXTTRANSFORM CAPITALIZE
+      onSelectValue(item);
     },
     [onSelectValue],
   );
 
   const handleClearField = useCallback(() => {
-    clearField();
+    onClearField();
 
     setQuery(undefined);
     onSelectValue(undefined);
-  }, [clearField, onSelectValue]);
+  }, [onClearField, onSelectValue]);
 
   return (
     <Container>

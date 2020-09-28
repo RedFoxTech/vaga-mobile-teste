@@ -1,4 +1,4 @@
-import { RectButton } from 'react-native-gesture-handler';
+import { BorderlessButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 import colors from '../../global/styles/colors';
 
@@ -77,7 +77,7 @@ export const ExperienceValue = styled.Text`
   font-size: 48px;
 `;
 
-export const FavoriteButton = styled(RectButton)`
+export const FavoriteButton = styled(BorderlessButton)`
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -150,7 +150,11 @@ export const ButtonsContainer = styled.View`
   justify-content: center;
 `;
 
-export const InfoButton = styled(RectButton)``;
+export const InfoButton = styled(BorderlessButton)`
+  flex: 1;
+  align-items: center;
+  padding: 8px 0;
+`;
 
 export const InfoButtonText = styled.Text`
   color: #04d361;

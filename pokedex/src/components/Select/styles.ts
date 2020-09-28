@@ -7,6 +7,7 @@ import colors from '../../global/styles/colors';
 
 export const Container = styled.View`
   width: 48%;
+  height: 80px;
 `;
 
 export const SelectField = styled.View`
@@ -52,6 +53,7 @@ export const SelectInput = styled(RNAutocompleteInput).attrs({
     paddingHorizontal: 8,
   },
 })`
+  flex: 1;
   font-size: 16px;
   color: ${colors.primary};
 `;
