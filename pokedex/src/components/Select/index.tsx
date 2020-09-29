@@ -79,6 +79,16 @@ const Select: React.ForwardRefRenderFunction<SelectRef, SelectProps> = (
         <SelectContainer>
           <SelectInput
             autoCorrect={false}
+            flatListProps={{
+              contentContainerStyle: {
+                paddingBottom: 20,
+              },
+              style: {
+                maxHeight: 45,
+                backgroundColor: '#fff',
+                borderRadius: 8,
+              },
+            }}
             data={
               (query &&
                 query !== '' &&

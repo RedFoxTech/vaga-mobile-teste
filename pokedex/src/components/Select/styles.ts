@@ -13,9 +13,7 @@ export const Container = styled.View`
 export const SelectField = styled.View`
   flex: 1;
   position: relative;
-  height: 56px;
   padding: 0 12px;
-  background: #fff;
   border-radius: 8px;
 
   flex-direction: row;
@@ -31,6 +29,9 @@ export const Label = styled.Text`
 export const SelectContainer = styled.View`
   flex: 1;
   position: absolute;
+  background: #fff;
+  min-height: 56px;
+  border-radius: 8px;
   left: 0;
   right: 0;
   top: 0;

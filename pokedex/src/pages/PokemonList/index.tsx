@@ -74,21 +74,6 @@ const PokemonList: React.FC = () => {
   const [filtering, setFiltering] = useState(false);
   const [hasFiltersActive, setHasFiltersActive] = useState(false);
 
-  useFocusEffect(
-    useCallback(() => {
-      if (hasFiltersActive) {
-        setPokemons((prevState) =>
-          prevState.map((pokemon) => ({
-            ...pokemon,
-            favorited: favoritesId.includes(pokemon.id),
-          })),
-        );
-      } else if (pokemons.length > 0) {
-        handleLoadMore();
-      }
-    }, [favoritesId]), //eslint-disable-line
-  );
-
   const loadPokemons = useCallback(
     async (firstLoad = true) => {
       if (firstLoad) {
@@ -182,6 +167,21 @@ const PokemonList: React.FC = () => {
       }
     }
   }, [favoritesId, loading, nextPageOffset, pokemons]);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (hasFiltersActive) {
+        setPokemons((prevState) =>
+          prevState.map((pokemon) => ({
+            ...pokemon,
+            favorited: favoritesId.includes(pokemon.id),
+          })),
+        );
+      } else if (pokemons.length > 0) {
+        handleLoadMore();
+      }
+    }, [favoritesId, hasFiltersActive]),//eslint-disable-line
+  );
 
   const handleFilterByName = useCallback(
     async (nameFilter: string) => {
