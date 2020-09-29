@@ -6,6 +6,7 @@ import React, {
   useContext,
 } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
+import { Alert } from 'react-native';
 import api from '../services/api';
 
 interface PokemonsNamesResponse {
@@ -54,7 +55,9 @@ const PokemonsProvider: React.FC = ({ children }) => {
         '/pokemon/?offset=0&limit=2000',
       );
 
-      const pokemonsNames = pokemons.results.map((pokemon) => pokemon.name);
+      const pokemonsNames = pokemons.results
+        .map((pokemon) => pokemon.name)
+        .sort();
 
       return pokemonsNames;
     }
@@ -68,12 +71,12 @@ const PokemonsProvider: React.FC = ({ children }) => {
     }
 
     async function loadData() {
-      const pokemons = await AsyncStorage.getItem('@Pokedex:pokemons');
+      try {
+        const pokemons = await AsyncStorage.getItem('@Pokedex:pokemons');
 
-      if (pokemons) {
-        const loadedData = JSON.parse(pokemons);
+        if (pokemons) {
+          const loadedData = JSON.parse(pokemons);
 
-        if (loadedData.names?.lenght > 0 && loadedData.types?.lenght > 0) {
           setData(loadedData);
         } else {
           const response = await Promise.all([
@@ -96,6 +99,8 @@ const PokemonsProvider: React.FC = ({ children }) => {
             }),
           );
         }
+      } catch (err) {
+        Alert.alert('Oops, ocorreu um erro...', 'Por favor reinicie o app.');
       }
     }
     if (data.names.length <= 0 || data.types.length <= 0) {

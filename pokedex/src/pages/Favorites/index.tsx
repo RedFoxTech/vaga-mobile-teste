@@ -45,9 +45,7 @@ const Favorites: React.FC = () => {
 
   useFocusEffect(
     useCallback(() => {
-      if (pokemons.length > 0) {
-        setPokemons(pokemons.filter((poke) => favorites.includes(poke.id)));
-      }
+      loadPokemons();
     }, [favorites]),//eslint-disable-line
   );
 

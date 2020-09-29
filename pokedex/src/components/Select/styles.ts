@@ -6,7 +6,7 @@ import fonts from '../../global/styles/fonts';
 import colors from '../../global/styles/colors';
 
 export const Container = styled.View`
-  width: 48%;
+  flex: 1;
   height: 80px;
 `;
 

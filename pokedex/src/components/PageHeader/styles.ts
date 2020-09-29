@@ -1,7 +1,9 @@
+import { BorderlessButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 import fonts from '../../global/styles/fonts';
 
 import colors from '../../global/styles/colors';
+import Select from '../Select';
 
 export const Container = styled.View`
   padding: 30px 30px 60px 30px;
@@ -12,6 +14,14 @@ export const TobBar = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const BackButton = styled(BorderlessButton)`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const BottomBar = styled.View`
@@ -35,6 +45,33 @@ export const FiltersButtonContainer = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-right: 4px;
+`;
+
+export const ListOrderGroup = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 8px;
+`;
+
+export const DefaultOrderButton = styled.TouchableOpacity`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 4px;
+`;
+
+export const NameOrderButton = styled.TouchableOpacity`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 4px;
+`;
+
+export const ListOrderLabel = styled.Text`
+  color: #fff;
+  font-family: ${fonts.Regular};
 `;
 
 export const CleanFiltersContainer = styled.View`
@@ -66,6 +103,12 @@ export const FilterButtonText = styled.Text`
   font-size: 16px;
 `;
 
+export const FiltersButton = styled(BorderlessButton)`
+  padding: 4px;
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const SearchForm = styled.View`
   margin: 16px 0;
 `;
@@ -73,5 +116,12 @@ export const SearchForm = styled.View`
 export const InputGroup = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+`;
+
+export const TypeSelect = styled(Select)`
+  margin-right: 8px;
+`;
+export const NameSelect = styled(Select)`
+  margin-left: 8px;
 `;

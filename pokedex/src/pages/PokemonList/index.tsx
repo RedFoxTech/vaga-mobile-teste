@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ActivityIndicator, Alert, FlatList } from 'react-native';
 
 import { useFocusEffect } from '@react-navigation/native';
@@ -9,10 +9,15 @@ import { usePokemons } from '../../hooks/pokemons';
 
 import api from '../../services/api';
 
-import PageHeader, { FilterOptions } from '../../components/PageHeader';
+import PageHeader, {
+  FilterOptions,
+  PageHeaderRef,
+} from '../../components/PageHeader';
 import PokemonItem, { PokemonBasicProps } from '../../components/PokemonItem';
 
 import { Container, EmptyView, EmptyText } from './styles';
+import compareByName from '../../utils/compareByName';
+import compareById from '../../utils/compareById';
 
 interface PokemonsResponse {
   next: string;
@@ -55,27 +60,28 @@ interface TypeFilterResponse {
 }
 
 const PokemonList: React.FC = () => {
+  const pageHeaderRef = useRef<PageHeaderRef>(null);
+
   const { navigate } = useNavigation();
 
   const { favorites, toggleFavorite } = usePokemons();
 
   const [pokemons, setPokemons] = useState<PokemonBasicProps[]>([]);
-  const [nextPage, setNextPage] = useState<string | undefined>(undefined);
+  const [nextPageOffset, setNextPageOffset] = useState<string | undefined>(
+    undefined,
+  );
   const [loading, setLoading] = useState(false);
   const [filtering, setFiltering] = useState(false);
   const [hasFiltersActive, setHasFiltersActive] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
-      if (pokemons.length > 0) {
-        setPokemons(
-          pokemons.map((poke) => ({
-            ...poke,
-            favorited: favorites.includes(poke.id),
-          })),
-        );
+      if (hasFiltersActive) {
+        pageHeaderRef.current?.clear();
+      } else {
+        handleLoadMore();
       }
-    }, [favorites]),//eslint-disable-line
+    }, [favorites]), //eslint-disable-line
   );
 
   const loadPokemons = useCallback(
@@ -113,7 +119,7 @@ const PokemonList: React.FC = () => {
         const pageOffset = data.next.split('?')[1];
 
         setPokemons(pokemonsFormatted);
-        setNextPage(pageOffset);
+        setNextPageOffset(pageOffset);
       } catch (err) {
         Alert.alert('Oops, ocorreu um erro...', 'Verifique sua conexão');
       } finally {
@@ -131,10 +137,10 @@ const PokemonList: React.FC = () => {
   }, []);//eslint-disable-line
 
   const handleLoadMore = useCallback(async () => {
-    if (!loading && nextPage) {
+    if (!loading && nextPageOffset) {
       try {
         const { data } = await api.get<PokemonsResponse>(
-          `/pokemon?${nextPage}`,
+          `/pokemon?${nextPageOffset}`,
         );
 
         const pokemonsDetailed = await Promise.all(
@@ -160,12 +166,12 @@ const PokemonList: React.FC = () => {
         const pageOffset = data.next.split('?')[1];
 
         setPokemons((prevState) => [...prevState, ...pokemonsFormatted]);
-        setNextPage(pageOffset);
+        setNextPageOffset(pageOffset);
       } catch (err) {
         Alert.alert('Oops, ocorreu um erro...', 'Verifique sua conexão');
       }
     }
-  }, [favorites, loading, nextPage]);
+  }, [favorites, loading, nextPageOffset]);
 
   const handleFilterByName = useCallback(
     async (nameFilter: string) => {
@@ -267,7 +273,7 @@ const PokemonList: React.FC = () => {
 
   const handleFiltersSubmit = useCallback(
     (filters: FilterOptions) => {
-      setNextPage(undefined);
+      setNextPageOffset(undefined);
       setHasFiltersActive(true);
 
       if (filters.nameFilter) {
@@ -277,6 +283,19 @@ const PokemonList: React.FC = () => {
       }
     },
     [handleFilterByName, handleFilterByType],
+  );
+
+  const handleSelecOrder = useCallback(
+    async (defaultOrder: boolean) => {
+      if (hasFiltersActive) {
+        if (defaultOrder) {
+          setPokemons(pokemons.sort(compareById));
+        } else {
+          setPokemons(pokemons.sort(compareByName));
+        }
+      }
+    },
+    [hasFiltersActive, pokemons],
   );
 
   const handleToggleFavorite = useCallback(
@@ -295,11 +314,13 @@ const PokemonList: React.FC = () => {
   return (
     <Container>
       <PageHeader
+        ref={pageHeaderRef}
         title="Pokédex"
         loading={filtering}
         filtersSubmit={(filters) => handleFiltersSubmit(filters)}
         clearFilters={handleClearFilters}
         onPressLeftButton={() => navigate('Landing')}
+        onSelectOrder={(value) => handleSelecOrder(value)}
       />
 
       {(pokemons.length > 0 && (

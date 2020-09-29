@@ -62,7 +62,6 @@ const StudyTabs: React.FC = () => {
         component={Favorites}
         options={{
           tabBarLabel: 'Favoritos',
-          unmountOnBlur: true,
           tabBarIcon: ({ color, size, focused }) => (
             <Ionicon
               name="heart-outline"

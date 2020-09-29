@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from 'react';
 import { TouchableOpacity } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
@@ -22,15 +28,22 @@ interface SelectProps {
   onClearField(): void;
 }
 
-const Select: React.FC<SelectProps> = ({
-  label,
-  options,
-  selectedValue,
-  onSelectValue,
-  onClearField,
-}) => {
+export interface SelectRef {
+  clear(): void;
+}
+
+const Select: React.ForwardRefRenderFunction<SelectRef, SelectProps> = (
+  { label, options, selectedValue, onSelectValue, onClearField, ...rest },
+  ref,
+) => {
   const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
   const [query, setQuery] = useState(selectedValue);
+
+  useImperativeHandle(ref, () => ({
+    clear() {
+      setQuery(undefined);
+    },
+  }));
 
   useEffect(() => {
     if (query) {
@@ -59,7 +72,7 @@ const Select: React.FC<SelectProps> = ({
   }, [onClearField, onSelectValue]);
 
   return (
-    <Container>
+    <Container {...rest}>
       <Label>{label}</Label>
 
       <SelectField style={{ flex: 1, position: 'relative' }}>
@@ -94,4 +107,4 @@ const Select: React.FC<SelectProps> = ({
     </Container>
   );
 };
-export default Select;
+export default forwardRef(Select);
