@@ -80,9 +80,6 @@ const Select: React.ForwardRefRenderFunction<SelectRef, SelectProps> = (
           <SelectInput
             autoCorrect={false}
             flatListProps={{
-              contentContainerStyle: {
-                paddingBottom: 20,
-              },
               style: {
                 maxHeight: 45,
                 backgroundColor: '#fff',
