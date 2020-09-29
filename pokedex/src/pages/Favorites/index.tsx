@@ -34,9 +34,9 @@ interface PokemonBasicResponse {
 }
 
 const Favorites: React.FC = () => {
-  const { navigate } = useNavigation();
+  const { goBack } = useNavigation();
 
-  const { favorites, toggleFavorite } = usePokemons();
+  const { favoritesId, toggleFavorite } = usePokemons();
 
   const [pokemons, setPokemons] = useState<PokemonBasicProps[]>([]);
   const [loading, setLoading] = useState(false);
@@ -46,7 +46,7 @@ const Favorites: React.FC = () => {
   useFocusEffect(
     useCallback(() => {
       loadPokemons();
-    }, [favorites]),//eslint-disable-line
+    }, [favoritesId]),//eslint-disable-line
   );
 
   const loadPokemons = useCallback(
@@ -58,7 +58,7 @@ const Favorites: React.FC = () => {
       }
       try {
         const favoritesDetails = await Promise.all(
-          favorites.map((favoriteId) =>
+          favoritesId.map((favoriteId) =>
             api
               .get<PokemonBasicResponse>(`/pokemon/${favoriteId}`)
               .then((resp) => resp.data),
@@ -85,7 +85,7 @@ const Favorites: React.FC = () => {
         setFiltering(false);
       }
     },
-    [favorites],
+    [favoritesId],
   );
 
   useEffect(() => {
@@ -157,7 +157,7 @@ const Favorites: React.FC = () => {
         loading={filtering}
         filtersSubmit={(filters) => handleFiltersSubmit(filters)}
         clearFilters={handleClearFilters}
-        onPressLeftButton={() => navigate('Landing')}
+        onPressLeftButton={goBack}
       />
 
       {(pokemons.length > 0 && (
@@ -185,7 +185,7 @@ const Favorites: React.FC = () => {
             />
           </EmptyView>
         )) ||
-        (favorites.length > 0 && (
+        (favoritesId.length > 0 && (
           <EmptyView>
             <EmptyText>
               Nenhum Pokémon favorito encontrado com os filtros informados.

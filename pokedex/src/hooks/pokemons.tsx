@@ -26,13 +26,13 @@ interface PokemonsTypesResponse {
 }
 
 interface PokemonsState {
-  favorites: Array<number>;
+  favoritesId: Array<number>;
   names: Array<string>;
   types: Array<string>;
 }
 
 interface PokemonsContextData {
-  favorites: Array<number>;
+  favoritesId: Array<number>;
   names: Array<string>;
   types: Array<string>;
   toggleFavorite(pokemonId: number): void;
@@ -44,7 +44,7 @@ const PokemonsContext = createContext<PokemonsContextData>(
 
 const PokemonsProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<PokemonsState>({
-    favorites: [],
+    favoritesId: [],
     names: [],
     types: [],
   } as PokemonsState);
@@ -110,25 +110,25 @@ const PokemonsProvider: React.FC = ({ children }) => {
 
   const toggleFavorite = useCallback(
     async (pokemonId: number) => {
-      let newFavorites = data.favorites;
+      let newFavorites = data.favoritesId;
 
-      const isFavorite = data.favorites.find(
+      const isFavorite = data.favoritesId.find(
         (favoriteId) => favoriteId === pokemonId,
       );
 
       if (isFavorite) {
-        newFavorites = data.favorites.filter(
+        newFavorites = data.favoritesId.filter(
           (favoriteId) => favoriteId !== pokemonId,
         );
       } else {
         newFavorites.push(pokemonId);
       }
 
-      setData({ ...data, favorites: newFavorites });
+      setData({ ...data, favoritesId: newFavorites });
 
       await AsyncStorage.setItem(
         '@Pokedex:pokemons',
-        JSON.stringify({ ...data, favorites: newFavorites }),
+        JSON.stringify({ ...data, favoritesId: newFavorites }),
       );
     },
     [data],

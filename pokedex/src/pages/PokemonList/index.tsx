@@ -64,7 +64,7 @@ const PokemonList: React.FC = () => {
 
   const { navigate } = useNavigation();
 
-  const { favorites, toggleFavorite } = usePokemons();
+  const { favoritesId, toggleFavorite } = usePokemons();
 
   const [pokemons, setPokemons] = useState<PokemonBasicProps[]>([]);
   const [nextPageOffset, setNextPageOffset] = useState<string | undefined>(
@@ -77,11 +77,16 @@ const PokemonList: React.FC = () => {
   useFocusEffect(
     useCallback(() => {
       if (hasFiltersActive) {
-        pageHeaderRef.current?.clear();
-      } else {
+        setPokemons((prevState) =>
+          prevState.map((pokemon) => ({
+            ...pokemon,
+            favorited: favoritesId.includes(pokemon.id),
+          })),
+        );
+      } else if (pokemons.length > 0) {
         handleLoadMore();
       }
-    }, [favorites]), //eslint-disable-line
+    }, [favoritesId]), //eslint-disable-line
   );
 
   const loadPokemons = useCallback(
@@ -113,7 +118,7 @@ const PokemonList: React.FC = () => {
           abilities: poke.abilities.map(
             (pokeAbility) => pokeAbility.ability.name,
           ),
-          favorited: favorites.includes(poke.id),
+          favorited: favoritesId.includes(poke.id),
         }));
 
         const pageOffset = data.next.split('?')[1];
@@ -127,7 +132,7 @@ const PokemonList: React.FC = () => {
         setFiltering(false);
       }
     },
-    [favorites],
+    [favoritesId],
   );
 
   useEffect(() => {
@@ -151,6 +156,11 @@ const PokemonList: React.FC = () => {
           ),
         );
 
+        const updatedPokemons = pokemons.map((pokemon) => ({
+          ...pokemon,
+          favorited: favoritesId.includes(pokemon.id),
+        }));
+
         const pokemonsFormatted = pokemonsDetailed.map((poke) => ({
           id: poke.id,
           name: poke.name,
@@ -160,18 +170,18 @@ const PokemonList: React.FC = () => {
           abilities: poke.abilities.map(
             (pokeAbility) => pokeAbility.ability.name,
           ),
-          favorited: favorites.includes(poke.id),
+          favorited: favoritesId.includes(poke.id),
         }));
 
         const pageOffset = data.next.split('?')[1];
 
-        setPokemons((prevState) => [...prevState, ...pokemonsFormatted]);
+        setPokemons([...updatedPokemons, ...pokemonsFormatted]);
         setNextPageOffset(pageOffset);
       } catch (err) {
         Alert.alert('Oops, ocorreu um erro...', 'Verifique sua conexão');
       }
     }
-  }, [favorites, loading, nextPageOffset]);
+  }, [favoritesId, loading, nextPageOffset, pokemons]);
 
   const handleFilterByName = useCallback(
     async (nameFilter: string) => {
@@ -194,7 +204,7 @@ const PokemonList: React.FC = () => {
             abilities: data.abilities.map(
               (pokeAbility) => pokeAbility.ability.name,
             ),
-            favorited: favorites.includes(data.id),
+            favorited: favoritesId.includes(data.id),
           };
 
           setPokemons([pokemonFormatted]);
@@ -213,7 +223,7 @@ const PokemonList: React.FC = () => {
 
       filterPokemons(nameFilter);
     },
-    [favorites],
+    [favoritesId],
   );
 
   const handleFilterByType = useCallback(
@@ -243,7 +253,7 @@ const PokemonList: React.FC = () => {
             abilities: poke.abilities.map(
               (pokeAbility) => pokeAbility.ability.name,
             ),
-            favorited: favorites.includes(poke.id),
+            favorited: favoritesId.includes(poke.id),
           }));
 
           setPokemons(pokemonsFormatted);
@@ -262,7 +272,7 @@ const PokemonList: React.FC = () => {
 
       filterPokemons(typeFilter);
     },
-    [favorites],
+    [favoritesId],
   );
 
   const handleClearFilters = useCallback(() => {

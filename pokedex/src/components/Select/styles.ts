@@ -44,10 +44,13 @@ export const SelectInput = styled(RNAutocompleteInput).attrs({
     paddingHorizontal: 12,
     paddingRight: 32,
   },
+  listContainerStyle: {
+    flex: 1,
+    marginTop: -20,
+  },
   listStyle: {
     margin: 0,
-    marginTop: -20,
-    maxHeight: 40,
+    maxHeight: 45,
     borderWidth: 0,
     borderRadius: 8,
     paddingHorizontal: 8,
@@ -60,6 +63,9 @@ export const SelectInput = styled(RNAutocompleteInput).attrs({
 
 export const OptionText = styled.Text`
   color: ${colors.primary};
+  border-width: 0.5px;
+  border-color: ${colors.primary};
+  border-radius: 8px;
   font-size: 16px;
   padding: 0 6px;
   margin: 2px;

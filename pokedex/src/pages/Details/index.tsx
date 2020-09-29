@@ -98,7 +98,7 @@ interface ParamsProps {
 const Details: React.FC = () => {
   const { goBack } = useNavigation();
 
-  const { favorites, toggleFavorite } = usePokemons();
+  const { favoritesId, toggleFavorite } = usePokemons();
 
   const { params: routeParams } = useRoute<
     RouteProp<Record<string, ParamsProps | undefined>, string>
@@ -131,7 +131,7 @@ const Details: React.FC = () => {
           abilities: data.abilities.map(
             (pokeAbility) => pokeAbility.ability.name,
           ),
-          favorited: favorites.includes(data.id),
+          favorited: favoritesId.includes(data.id),
           location_area_encounters: data.location_area_encounters,
         };
 
@@ -142,7 +142,7 @@ const Details: React.FC = () => {
     }
 
     loadPokemons();
-  }, [favorites, routeParams?.id]);
+  }, [favoritesId, routeParams?.id]);
 
   const handleToggleFavorite = useCallback(async () => {
     if (pokemon) {
