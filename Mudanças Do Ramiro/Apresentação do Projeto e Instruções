@@ -1,0 +1,28 @@
+Olá!
+
+Meu nome é Ramiro e eu estou fazendo essa branch para o Desafio Pokémon da RedFox. Por ser um fã de pokémon, adorei participar do desafio. Tive várias idéias assim que li o
+README do arquivo (que eu não vou conseguir fazer bonitinho aqui na minha branch por conta do tempo :P), mas assim que notei que não especificaram um programa para desenvolver
+o app eu tive ideias ainda melhores! Eu gosto de me desafiar, mas por ser desenvolvedor de jogos minha especialidade é achar maneiras de fazer algo com as ferramentas que tenho.
+Minha ferramenta favorita para desenvolvimento de jogos é o Godot, afinal nunca cheguei a mexer no Android Studio. Mas pensei que fazer um APP em uma engine de desenvolvimento de
+jogos seria muito fácil, então quis utilizar o Android Studio. O Android Studio teria sido um ótimo programa para eu seguir com o projeto, mas quando lembrei que vocês queriam ver
+o meu potencial para resolução de problemas, só pude pensar em um programa: Excel.
+
+Sim, o excel não é um programa feito por mim, muito menos o Planilhas Google que foi o que utilizei (Já mencionei que amo programas FOSS? :P) Mas achei que seria muito legal fazer
+um aplicativo que pudesse ser utilizado através do google drive de alguém sem muito esforço. Fora isso, trabalhando com o Planilhas Google eu torno o meu projeto Cross Platform,
+afinal o usuário pode utilizálo no PC ou no Celular sem nenhum problema. Fiz tudo utilizando o AppScript do Google, tive que aprender no primeiro dia do projeto mas como é quase
+igual à JavaScript eu consegui fazer rapidinho o app no Planilhas Google. Em uma das pastas que estão aqui na minha Branch vou deixar o link para a planilha. Esse link já fará uma
+cópia da planilha para o seu Google Drive, porém antes de poder utilizar a planilha vocês deverão (ATRAVÉS DO COMPUTADOR) abrir a planilha e no menu "PokéAPI" vocês poderão clicar
+em "Initialize Pokédex" e assim que colocarem o número da dex de um pokémon, todas as suas informações aparecerão na planilha. O único downside desse app é que vocês terão que
+utilizar o número do pokémon para pesquisá-lo e não o nome.
+
+Mas claro, apenas um aplicativo pelo excel seria fácil demais e tecnicamente trapaça, então resolvi utilizar o Godot para fazer uma segunda versão do aplicativo. Essa versão é em
+formato APK e pode ser instalada direto no seu celular. O funcionamento é basicamente o mesmo da planilha do excel, porém com UI e UX superiores e a vantagem de poder pesquisar
+tanto pelo número quanto pelo nome do Pokémon desejado.
+
+Para ambos os apps, adicionei um fetch ao servidor do Pokémon Showdown para conseguir fotos dos modelos 3D dos pokémons que forem pesquisados. Infelizmente, o Pokémon Showdown 
+também sofre com a falta de recursos para a oitava geração, então alguns pokemons dessa geração não irão ter modelos 3D ainda, mas o mesmo problema ocorre com os ataques dos Pokés
+pela PokéAPI. Quanto ao código do app feito no Planilhas Google, vou enviar o arquivo .gs na pasta, já que pelo link que vocês copiarão a planilha não tem como acessar o script.
+
+No app do Excel, resolvi adicionar também a descrição dos pokémons traduzida para português já que a PokéAPI só contém as versões originais dos jogos. Pra isso precisei apenas
+utilizar as próprias funções do AppScript da Google para acessar a classe de tradução do Google. Algumas traduções não ficam perfeitas, mas é por conta de como os flavor_texts
+foram armazenados no JSON da PokéAPI.
