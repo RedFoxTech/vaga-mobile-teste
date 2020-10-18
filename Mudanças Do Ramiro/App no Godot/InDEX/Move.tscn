@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Pokemon Font.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+border_width_left = 10
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+corner_radius_top_left = 75
+corner_radius_bottom_left = 75
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+corner_radius_top_right = 75
+corner_radius_bottom_right = 75
+
+[node name="MoveList" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 6.10352e-05
+margin_bottom = -1160.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_right = 288.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+text = "Ataque"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Type" type="Label" parent="."]
+margin_left = 288.0
+margin_right = 432.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+text = "Tipo"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Power" type="Label" parent="."]
+margin_left = 432.0
+margin_right = 576.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+text = "Poder"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Accuracy" type="Label" parent="."]
+margin_left = 576.0
+margin_right = 720.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+text = "Prec."
+align = 1
+valign = 1
+uppercase = true

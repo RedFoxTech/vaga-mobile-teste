@@ -1,0 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="InDEX"
+config/description="Aplicativo de busca para sprites, modelos e ataques de pokémons utilizando a PokéAPI!"
+run/main_scene="res://Main.tscn"
+boot_splash/image="res://Pokeball Icon.png"
+boot_splash/bg_color=Color( 0.792157, 0.862745, 0.623529, 1 )
+config/icon="res://Pokeball Icon.png"
+
+[display]
+
+window/size/width=720
+window/size/height=1280
+window/size/resizable=false
+window/size/borderless=true
+window/size/test_width=360
+window/size/test_height=640
+window/vsync/use_vsync=false
+window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
