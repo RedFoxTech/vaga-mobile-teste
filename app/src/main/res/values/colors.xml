@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBtnLogin">#000025</color>
+    <color name="colorBtnCreate">#A900C0</color>
+    <color name="colorBtnFacebook">#2B448C</color>
+    <color name="colorBtnGoogle">#EA4335</color>
+    <color name="appBar">#BF0D36</color>
+    <color name="cardView">#B3BD1022</color>
+    <color name="cardViewFavorite">#B32B448C</color>
+    <color name="background">#FFFFFF</color>
+    <color name="backgroundTransp">#9AFFFFFF</color>
+    <color name="divgray">#807F7F</color>
+
+    <color name="textInputLoginA">#000025</color>
+    <color name="textInputLoginB">#BD1022</color>
+    <color name="textInputLoginC">#2B448C</color>
+
+    <color name="pokemonBlue">#B32B448C</color>
+    <color name="pokemonBrown">#B37E4F45</color>
+    <color name="pokemonGray">#B3707070</color>
+    <color name="pokemonGreen">#B3077C25</color>
+    <color name="pokemonPink">#B3F83CD0</color>
+    <color name="pokemonPurple">#B37E098D</color>
+    <color name="pokemonRed">#B3BD1022</color>
+    <color name="pokemonWhite">#B3C4C4C4</color>
+    <color name="pokemonYellow">#B3EED74B</color>
+    <color name="pokemonDefault">#B3000000</color>
+    <color name="pokemonWho">#D9BD1022</color>
+
+</resources>
