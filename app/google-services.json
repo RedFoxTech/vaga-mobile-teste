@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "741359383305",
+    "firebase_url": "https://pokemundo-a4d51.firebaseio.com",
+    "project_id": "pokemundo-a4d51",
+    "storage_bucket": "pokemundo-a4d51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741359383305:android:a5f158395fcd53316859d8",
+        "android_client_info": {
+          "package_name": "br.com.pokemundo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741359383305-u10c2kl018uobqmu67jq3kttut1r16no.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGcXe3rBnbbSeCPuJhJ9AWkJhn4hEVyrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741359383305-u10c2kl018uobqmu67jq3kttut1r16no.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
