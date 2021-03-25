@@ -16,11 +16,11 @@ class _HomePageState extends State<HomePage> {
     http.Response response;
 
     if (_search == null) {
-      response =
-          await http.get(Uri.parse('https://pokeapi.co/api/v2/pokemon/ditto'));
+      response = await http.get(
+          Uri.parse('https://pokeapi.co/api/v2/pokemon?limit=100&offset=200'));
     } else {
-      response =
-          await http.get(Uri.parse('https://pokeapi.co/api/v2/pokemon/ditto'));
+      response = await http.get(
+          Uri.parse('https://pokeapi.co/api/v2/pokemon?limit=100&offset=200'));
     }
     return json.decode(response.body);
   }
@@ -42,6 +42,14 @@ class _HomePageState extends State<HomePage> {
           'Pokemon RedFox',
           style: TextStyle(color: Colors.white),
         ),
+        actions: [
+          IconButton(
+              icon: Icon(
+                Icons.refresh,
+                color: Colors.white,
+              ),
+              onPressed: () {})
+        ],
         centerTitle: true,
       ),
       backgroundColor: Colors.black,
@@ -60,6 +68,11 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
                 fontSize: 18.0,
               ),
+              onSubmitted: (text) {
+                setState(() {
+                  _search = text;
+                });
+              },
             ),
           ),
           Expanded(
@@ -99,14 +112,14 @@ Widget _createPokemonTable(BuildContext context, AsyncSnapshot snapshot) {
       padding: EdgeInsets.all(18.0),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 18.0,
-        mainAxisExtent: 18.0,
+        crossAxisSpacing: 10.0,
+        mainAxisExtent: 10.0,
       ),
-      itemCount: snapshot.data['abilities'].length,
+      itemCount: snapshot.data['results'].length,
       itemBuilder: (context, index) {
         return GestureDetector(
           child: Image.network(
-            snapshot.data['abilities'][index]['ability']['name']['url'],
+            snapshot.data['results'][index]['name']['url'],
             height: 300.0,
             fit: BoxFit.cover,
           ),
