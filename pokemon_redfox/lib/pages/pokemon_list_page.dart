@@ -84,6 +84,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
         itemBuilder: (_, index) {
           final item = snapshot.data.results[index];
           return ListTile(
+            onTap: () {},
             title: Text("${item?.detail?.name}"),
             leading: Image.network(item.getImage),
             subtitle: Text("Habilidade: ${item.getAbilities}"),
