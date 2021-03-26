@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_redfox/home_page.dart';
+import 'package:pokemon_redfox/pages/pokemon_list_page.dart';
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: HomePage(),
-    theme: ThemeData(
-      hintColor: Colors.amber,
-      primaryColor: Colors.white,
-      inputDecorationTheme: InputDecorationTheme(
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-            color: Colors.white,
-          )),
-          focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.amber)),
-          hintStyle: TextStyle(color: Colors.amber)),
-    ),
-  ));
+  runApp(PokemonApp());
+}
+
+class PokemonApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primaryColor: Colors.redAccent),
+      home: PokemonListPage(),
+    );
+  }
 }
