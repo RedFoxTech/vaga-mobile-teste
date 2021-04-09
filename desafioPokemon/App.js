@@ -9,6 +9,15 @@ import {
   View,
 } from 'react-native';
 
-import './src/Components/List.js'
+import List from './src/Components/List.js'
 
-export default App;
+export default function App () {
+	return (
+		<>
+		<StatusBar/>
+		<SafeAreaView>
+			<List/>
+		</SafeAreaView>
+		</>
+	)	
+}
