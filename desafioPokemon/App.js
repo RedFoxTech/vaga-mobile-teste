@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,15 +9,27 @@ import {
   View,
 } from 'react-native';
 
+import {NavigationContainer} from '@react-navigation/native';
+import {createAppContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
 import List from './src/Components/List.js'
 
-export default function App () {
-	return (
-		<>
-		<StatusBar/>
-		<SafeAreaView>
-			<List/>
-		</SafeAreaView>
-		</>
-	)	
+const Stack = createStackNavigator();
+
+class App extends Component {
+	render() {
+		return (
+			<>
+			<StatusBar/>
+			<NavigationContainer>
+				<Stack.Navigator initialRouteName="Home" headerMode="none">
+			        	<Stack.Screen name="Home" component={List} />
+			        </Stack.Navigator>
+			</NavigationContainer>
+			</>
+		);	
+	}
 }
+
+export default App;

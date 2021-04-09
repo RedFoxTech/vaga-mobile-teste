@@ -3,6 +3,7 @@ import {
 	View,
 	Text,
 	FlatList,
+	ListItem,
 	TouchableOpacity,
 } from 'react-native';
 
@@ -11,6 +12,7 @@ class List extends Component {
 		super(props)
 		this.state = {
 			data: [],
+			loading: false,
 			error: null,
 			search: null,
 
@@ -19,7 +21,9 @@ class List extends Component {
 
 	render() {
 		return(
-			<View/>	
+			<View>
+				<Text>List component = Home!</Text>
+			</View>
 		)
 	}
 }
