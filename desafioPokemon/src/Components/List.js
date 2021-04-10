@@ -11,7 +11,7 @@ import {
     Image
 } from 'react-native';
 
-const apiUrl = "https://pokeapi.co/api/v2/pokemon/"
+const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=100"
 
 const List = ({navigation}) => {
     useEffect(() => {
@@ -40,12 +40,13 @@ const List = ({navigation}) => {
     return (
 	<View> 
 	    <TextInput
+		style={styles.searchInput}
 		placeholder="Search"
 		onChangeText={value => setSearch(value)}
 		value={search}
 	    /> 
-	    <ScrollView style={styles.pokeWrapper}>
-		<View style={styles.container}>
+	    <ScrollView>
+		<View style={styles.centerList}>
 		    {pokes.filter(pokemon => pokemon.name.toLowerCase().includes(search.toLowerCase())).map((pokemon, index) => {
 			return (
 			    <TouchableOpacity
@@ -66,7 +67,7 @@ const List = ({navigation}) => {
 				uri: `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokeId(index + 1,)}.png`,
 				}}
 			    />
-			    <Text>{pokemon.name}</Text>
+			    <Text style={styles.titleText}>{pokemon.name}</Text>
 			    </TouchableOpacity>
 		    );
 		})}
@@ -79,4 +80,22 @@ const List = ({navigation}) => {
 
 export default List;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    centerList: {
+	flex: 1,
+	flexDirection: 'column',
+	justifyContent: 'center',
+	alignItems: 'center',
+	marginBottom: 50,
+	padding: 10,
+    },
+
+    titleText: {
+	textAlign: 'center',
+	fontWeight: 'bold',
+    },
+
+    searchInput: {
+	padding: 10,
+    }
+})
