@@ -1,31 +1,26 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
-	View,
-	Text,
-	FlatList,
-	ListItem,
-	TouchableOpacity,
+    View,
+    Text,
+    FlatList,
+    ListItem,
+    TouchableOpacity,
 } from 'react-native';
 
-class Details extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			data: [],
-			loading: false,
-			error: null,
-			search: null,
+const apiUrl = "https://pokeapi.co/api/v2/pokemon/"
 
-		};
-	}
+const Details = (props) => {
+    const [details, setDetails] = useState([]) 	
 
-	render() {
-		return(
-			<View>
-				<Text>Details COmponent!</Text>
-			</View>
-		)
-	}
+    useEffect(() => {
+	fetchDetails()
+    }, [])
+
+    const fetchDetails = () => {
+	const {state} = props.navigation
+	fetch(apiUrl + state.params.pokemon)
+	    .then(res => res.json())
+	    .then(details => setDetails(details));
+    }
 }
-
 export default Details;
