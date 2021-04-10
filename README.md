@@ -48,3 +48,13 @@ Após terminar o desafio, você pode solicitar um pull request para a branch mas
 ## Só isso?
 
 Só! Mas se estiver motivado, pode publicá-lo na sua loja do Google Play ou da App Store e nos enviar o link.
+
+
+## Resolução
+
+### Tecnologias usadas
+* React Native (Javascript)
+* Expo
+* API Poke.io
+* Axios
+
