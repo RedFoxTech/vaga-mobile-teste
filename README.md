@@ -1,5 +1,24 @@
 # Teste de Mobile
 
+## ✅ Resolução
+
+### ⚒️ Tecnologias usadas
+* React Native (Javascript)
+* Expo
+* API Poke.io
+* Axios
+
+### 📱 Telas
+<p  align="center">
+<img src="https://user-images.githubusercontent.com/61291155/114281794-d0532500-9a16-11eb-9658-b1cd30534566.png" width="200px">
+<img src="https://user-images.githubusercontent.com/61291155/114282102-473ced80-9a18-11eb-83b7-5c4c322f061d.png" width="200px">
+<img src="https://user-images.githubusercontent.com/61291155/114282106-502dbf00-9a18-11eb-935c-18424e8c35bd.png" width="200px">
+<img src="https://user-images.githubusercontent.com/61291155/114282114-59b72700-9a18-11eb-9a7a-33fa25be2167.png" width="200px">
+</p>
+
+
+
+## Proposta
 Olá Dev!  Tudo bem?
 
 Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso!
@@ -50,18 +69,4 @@ Após terminar o desafio, você pode solicitar um pull request para a branch mas
 Só! Mas se estiver motivado, pode publicá-lo na sua loja do Google Play ou da App Store e nos enviar o link.
 
 
-## Resolução
 
-### Tecnologias usadas
-* React Native (Javascript)
-* Expo
-* API Poke.io
-* Axios
-
-### Telas
-<p  align="center">
-<img src="https://user-images.githubusercontent.com/61291155/114281794-d0532500-9a16-11eb-9658-b1cd30534566.png" width="200px">
-<img src="https://user-images.githubusercontent.com/61291155/114282102-473ced80-9a18-11eb-83b7-5c4c322f061d.png" width="200px">
-<img src="https://user-images.githubusercontent.com/61291155/114282106-502dbf00-9a18-11eb-935c-18424e8c35bd.png" width="200px">
-<img src="https://user-images.githubusercontent.com/61291155/114282114-59b72700-9a18-11eb-9a7a-33fa25be2167.png" width="200px">
-</p>
