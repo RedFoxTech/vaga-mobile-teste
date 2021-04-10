@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {
-	View,
-	Text,
-	FlatList,
-	ListItem,
-	TouchableOpacity,
-	StyleSheet,
-	ScrollView,
-	Image
+    View,
+    Text,
+    TextInput,
+    FlatList,
+    ListItem,
+    TouchableOpacity,
+    StyleSheet,
+    ScrollView,
+    Image
 } from 'react-native';
 
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/"
@@ -38,14 +39,14 @@ const List = ({navigation}) => {
 
     return (
 	<View> 
-	    <TouchableOpacity
-		style={styles.pokeball}
-		activeOpacity={0.5}
-		onPress={() => navigation.navigate('Profile')}>
-	    </TouchableOpacity>
+	    <TextInput
+		placeholder="Search"
+		onChangeText={value => setSearch(value)}
+		value={search}
+	    /> 
 	    <ScrollView style={styles.pokeWrapper}>
 		<View style={styles.container}>
-		    {pokes.map((pokemon, index) => {
+		    {pokes.filter(pokemon => pokemon.name.toLowerCase().includes(search.toLowerCase())).map((pokemon, index) => {
 			return (
 			    <TouchableOpacity
 				key={index}
