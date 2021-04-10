@@ -3,7 +3,7 @@ import {
     View,
     Text,
     Image,
-    TouchableOpacity,
+    StyleSheet,
 } from 'react-native';
 
 const Details = ({route, navigation}) => {
@@ -23,17 +23,32 @@ const Details = ({route, navigation}) => {
     }
 
     return details.name ? (
-	<View>
-	    <Image style={{width: 50, height: 50}} source={{uri: route.params.image}}/>
-	    <Text>Nome: {details.name}</Text>
+	<View style={styles.centerView}>
+	    <Image style={{width: 200, height: 200}} source={{uri: route.params.image}}/>
+	    <Text style={styles.titleText}>Nome: {details.name}</Text>
 	    <Text>Peso: {details.weight}</Text>
 	    <Text>Tipo: {details.types[0].type.name}</Text>
 	    <Text>Altura: {details.height}</Text>
+	    <Text>Habilidade: {details.abilities[0].ability.name}</Text>
 	</View>
     ) : (
-	<View>
-	    <Text>Carregando...</Text>
+	<View style={styles.centerView}>
+	    <Text style={styles.titleText}>Carregando...</Text>
 	</View>
     )
 }
 export default Details;
+
+const styles = StyleSheet.create({
+    centerView: {
+	flex: 1,
+	flexDirection: 'column',
+	justifyContent: 'center',
+	alignItems: 'center',
+    },
+
+    titleText: {
+	textAlign: 'center',
+	fontWeight: 'bold',
+    },
+})

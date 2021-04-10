@@ -11,7 +11,7 @@ import {
     Image
 } from 'react-native';
 
-const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=100"
+const apiUrl = "https://pokeapi.co/api/v2/pokemon/"
 
 const List = ({navigation}) => {
     useEffect(() => {
@@ -41,7 +41,7 @@ const List = ({navigation}) => {
 	<View> 
 	    <TextInput
 		style={styles.searchInput}
-		placeholder="Search"
+		placeholder="Pesquisar"
 		onChangeText={value => setSearch(value)}
 		value={search}
 	    /> 
