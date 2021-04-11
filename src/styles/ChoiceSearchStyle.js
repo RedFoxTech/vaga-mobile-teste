@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     buttons:{
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 150,
+      marginTop: 100,
     },
     title:{
       color:"#E7E7E7",
@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
       alignItems: 'center', 
       justifyContent: 'center',
       marginTop: 30,
-      borderRadius: 30,
+      borderRadius: 5,
       fontFamily: 'Concert One',
-
+      borderColor: "#fff",
+      borderWidth: 1,
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
@@ -36,10 +37,17 @@ const styles = StyleSheet.create({
       elevation: 17,
   },
   logo:{
-    height: 150,
-    marginLeft: 40,
-    marginTop: 50,
+    height: 130,
+    marginLeft: 60,
+    marginTop: 100,
   },
+  ash:{
+    position: 'absolute',
+    height: 280,
+    width: 430,
+    marginLeft: 1,
+    bottom:0,
+  }
   });
 
   module.exports = styles;

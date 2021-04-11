@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
       image:{
         height: 40,
         width: 40,
+        marginLeft: 10,
       },
       boxButtons:{
         justifyContent: 'center',
@@ -27,14 +28,16 @@ const styles = StyleSheet.create({
     },
     button:{
         backgroundColor: "#FE9000",
-        width: 200,
-        height: 45,
+        width: 230,
+        height: 60,
         alignItems: 'center', 
-        justifyContent: 'center',
-        borderRadius: 30,
-        marginBottom: 18,  
+        borderRadius: 5,
+        marginBottom: 18, 
+        marginLeft: 0, 
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        borderColor: "#fff",
+        borderWidth: 1,
+        justifyContent: 'flex-start',
 
         shadowColor: "#000",
         shadowOffset: {
@@ -53,11 +56,16 @@ const styles = StyleSheet.create({
       buttonText:{
           fontSize: 25,
           fontFamily: 'sans-serif-light',
+          marginLeft: 10,
       },
       choiceType:{
         color:"#E7E7E7",
         fontFamily: 'serif',
         fontSize: 30,
+        borderBottomColor: "#fff",
+        borderBottomWidth: 1,
+        width: 230,
+        height: 50,
         textAlign: 'center',
         marginTop: 25,
       }
