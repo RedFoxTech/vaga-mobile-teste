@@ -8,23 +8,25 @@ export default function ChoiceSearch({navigation}){
     return(
         <SafeAreaView style={styles.container}>
 
+            <Image style={styles.ash} source={require('../images/ash.png')}></Image>
+            
             <View style={styles.logo}>
                 <Image style={styles.imageLogo} source={require('../images/logo.png')}></Image>
             </View>
 
             <View style={styles.buttons}>
             <StatusBar style="auto"/>
-            <Text style={styles.title}>Pesquisar por: </Text>
 
             <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('NameSearch')}>
-                <Text>NOME</Text>
+                <Text>INSERIR NOME</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('ChoicePokemon')}>
-                <Text>LISTA</Text>
+                <Text>EXIBIR LISTA</Text>
             </TouchableOpacity>
 
             </View>
+
 
       </SafeAreaView>
 

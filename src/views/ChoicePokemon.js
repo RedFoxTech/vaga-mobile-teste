@@ -14,6 +14,7 @@ export default function ChoicePokemon({navigation}){
     return(
         
         <SafeAreaView style={styles.container}>
+
              <View style={styles.backScreen}>
                 <Image style={styles.iconImage} source={require('../images/icon.png')}></Image>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -21,16 +22,16 @@ export default function ChoicePokemon({navigation}){
                     </TouchableOpacity>
                 </View>
             <View style={styles.boxButtons}>
-            <Text style={styles.choiceType}>Escolha um Pokemon</Text>
+            <Text style={styles.choiceType}>Escolha:</Text>
                 <FlatList
                 style={styles.buttons}
             data= {pokemons}
             keyStractor={(pokemon)=> pokemon.name}
             contentContainerStyle= {{flexGrow: 1}}
+            showsVerticalScrollIndicator ={false}
             renderItem={typesShow}
             />
             </View>
-           
                
 
         </SafeAreaView>
