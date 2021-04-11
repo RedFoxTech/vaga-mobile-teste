@@ -10,10 +10,12 @@
 
 ### 📱 Telas
 <p  align="center">
-<img src="https://user-images.githubusercontent.com/61291155/114281794-d0532500-9a16-11eb-9658-b1cd30534566.png" width="200px">
-<img src="https://user-images.githubusercontent.com/61291155/114282102-473ced80-9a18-11eb-83b7-5c4c322f061d.png" width="200px">
-<img src="https://user-images.githubusercontent.com/61291155/114282106-502dbf00-9a18-11eb-935c-18424e8c35bd.png" width="200px">
-<img src="https://user-images.githubusercontent.com/61291155/114282114-59b72700-9a18-11eb-9a7a-33fa25be2167.png" width="200px">
+<img src="https://user-images.githubusercontent.com/61291155/114290831-bafeea80-9a58-11eb-8232-58cab73d7aff.png" width="200px">
+<img src="https://user-images.githubusercontent.com/61291155/114290841-c94d0680-9a58-11eb-8c3f-494d46401a6f.png" width="200px">
+<img src="https://user-images.githubusercontent.com/61291155/114290852-d7028c00-9a58-11eb-8097-65612f566e5a.png" width="200px">
+<img src="https://user-images.githubusercontent.com/61291155/114290854-e1bd2100-9a58-11eb-8289-2ffe339891bb.png" width="200px">
+<img src="https://user-images.githubusercontent.com/61291155/114290858-eeda1000-9a58-11eb-8832-b64e33d65273.png" width="200px">
+<img src="https://user-images.githubusercontent.com/61291155/114290863-fbf6ff00-9a58-11eb-8c6f-b240d5d41702.png" width="200px">
 </p>
 
 
