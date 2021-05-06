@@ -1,4 +1,4 @@
-# Teste de Mobile
+# PokeEasy
 
 ## ✅ Resolução
 
