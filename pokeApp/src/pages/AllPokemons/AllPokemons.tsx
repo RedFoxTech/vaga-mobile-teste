@@ -1,16 +1,20 @@
 import React from 'react'
 import { View, Text, FlatList, Image } from 'react-native'
+
+import { Container, Header, Title } from './AllPokemons.styles';
+
+import PokeRender from '../../components/PokeRender/PokeRender';
 import api from '../../services/api';
 
 export default function AllPokemons() {
     const [pokemons, setPokemons] = React.useState<any[]>([])
-    
+
     React.useEffect(() => {
         async function loadData() {
             try {
                 const response = await api.get('/pokemon?limit=100');
 
-            
+
                 setPokemons(response.data.results)
 
                 // console.log(pokemons)
@@ -22,25 +26,19 @@ export default function AllPokemons() {
     }, []);
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#FFF' }}>
-            
+        <Container>
+            <Header>
+                <Title>Pokemon</Title>
+                <Image source={require('../../assets/img/pokebola.png')} style={{ width: 80, height: 80 }} />
+            </Header>
             <FlatList
                 data={pokemons}
                 keyExtractor={item => item.name}
-                renderItem={({item}) => {
-                    const {name, url} = item
-                    const URL = url.replace('https://pokeapi.co/api/v2/pokemon/','').replace('/','')
-                    const urlImage = `https://pokeres.bastionbot.org/images/pokemon/${URL}.png`
-                    
-                    return(
-                        <View>
-                            <Image source={{uri: urlImage}} style={{width: 50, height: 50}}/>
-                            <Text> {name} </Text>
-                        </View>
-                    );
-                }}
+                renderItem={({ item }) => <PokeRender data={item} />}
             />
-            
-        </View>
+
+        </Container>
     )
 }
+
+

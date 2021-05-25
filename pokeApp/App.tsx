@@ -1,6 +1,6 @@
 import React from 'react';
-import AllPokemons from './src/components/AllPokemons/AllPokemons';
-import SearchPokemon from './src/components/SearchPokemon/SearchPokemon';
+import AllPokemons from './src/pages/AllPokemons/AllPokemons';
+import SearchPokemon from './src/pages/SearchPokemon/SearchPokemon';
 
 
 const App = () => {
