@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <>
-      <SearchPokemon />
+      <AllPokemons />
     </>
   );
 };
