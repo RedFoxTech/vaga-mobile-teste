@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Image, View } from 'react-native'
+import { FlatList, Text, Image, View } from 'react-native'
 
 import Pokedash from '../../models/Pokedash'
 import { DrawerActions } from '@react-navigation/native';
@@ -18,7 +18,7 @@ const LoadingBlock = () => {
     );
 }
 
-export default function AllPokemons({navigation}) {
+export default function AllPokemons({navigation}: any) {
 
     
     const [pokemons, setPokemons] = React.useState<any[]>([])
@@ -27,7 +27,7 @@ export default function AllPokemons({navigation}) {
     async function loadData() {
         try {
             const poke = await Pokedash('/pokemon?limit=500')
-            setPokemons(poke.sort())
+            setPokemons(poke)
         } catch (error) {
             console.log(error)
         }
@@ -49,7 +49,7 @@ export default function AllPokemons({navigation}) {
             </Header>
             
             {loading ? <FlatList 
-                data={pokemons}
+                data={pokemons.sort((a, b): any => a.name > b.name)}
                 keyExtractor={item => item.name}
                 renderItem={({ item }) => <PokeRender data={item}  />}
             /> : <LoadingBlock />}

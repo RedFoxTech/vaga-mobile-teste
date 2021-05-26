@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Image, Alert, View } from 'react-native';
 import BodyModel from '../BodyModel/BodyModel';
-import { Container, TextName, Touch } from './PokeRender.styles';
+import { TextName, Touch } from './PokeRender.styles';
 
 export default function PokeRender({ data }) {
     const [modalVisible, setModalVisible] = React.useState(false);

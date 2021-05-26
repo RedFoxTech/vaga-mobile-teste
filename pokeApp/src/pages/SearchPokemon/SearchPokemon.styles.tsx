@@ -32,6 +32,7 @@ export const TextProps = styled.Text`
 color: #000;
 font-weight: bold;
 margin: 5px;
+text-transform: capitalize;
 `;
 
 export const CenterProps = styled.View`
