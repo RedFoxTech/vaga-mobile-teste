@@ -77,17 +77,18 @@ const SearchPokemon = ({navigation}) => {
         {loading && data.map(item => {
           return (
             <View style={{alignItems:'center'}} key={item.id}>
-              <Image source={require('../../assets/img/trainer.png')} style={{width: 180, height: 180}} />
+              <Image source={require('../../assets/img/trainer.png')} style={{width: 80, height: 80}} />
               <CenterProps>
-                <Image source={{ uri: item.img }} style={{ width: 200, height: 200, marginLeft: 4, }} />
-                <View>
+                <Image source={{ uri: item.img }} style={{ width: 200, height: 200 }} />
+                <View style={{marginLeft:-10}}>
                   <TextProps>Name: {item.name}</TextProps>
                   <TextProps>Type: {item.type} </TextProps>
                   <TextProps>Abilities: {item.abilities} </TextProps>
-                  <TextProps>Weight: {item.weight} </TextProps>
+                  <TextProps>Weight: {item.weight} lbs</TextProps>
                   <TextProps>Height: {item.height} </TextProps>
                 </View>
               </CenterProps>
+              
             </View>
           );
         })}

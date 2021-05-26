@@ -55,7 +55,7 @@ export default function BodyModel({ name, closed }) {
             <TextDetails>Ability: {item.abilities}</TextDetails>
             <TextDetails>Type: {item.type}</TextDetails>
             <TextDetails>Height: {item.height}</TextDetails>
-            <TextDetails>Weight: {item.weight}lbs</TextDetails>
+            <TextDetails>Weight: {item.weight} lbs</TextDetails>
           </View>)}
       </CenterView>
     </Container>
