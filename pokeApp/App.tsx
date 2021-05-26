@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: '#FFF'}}>
-      <SearchPokemon />
+      <AllPokemons />
     </View>
   );
 };
