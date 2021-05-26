@@ -35,6 +35,15 @@ margin: 5px;
 text-transform: capitalize;
 `;
 
+export const TextName = styled.Text`
+color: #E74233;
+font-weight: bold;
+font-size: 18px
+margin: 5px;
+text-transform: capitalize;
+`;
+
+
 export const CenterProps = styled.View`
 flex-direction: row;
 align-items: center;

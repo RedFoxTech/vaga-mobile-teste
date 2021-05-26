@@ -32,13 +32,8 @@ text-align: center;
 
 export const TouchClose = styled.TouchableOpacity`
 width: 100px;
-`;
-
-export const Text = styled.Text`
-margin-left: 3px;
-font-size: 20px;
-font-weight: bold;
-color: #E74233;
+margin-left: 5px;
+margin-top: 5px;
 `;
 
 export const Header = styled.View`

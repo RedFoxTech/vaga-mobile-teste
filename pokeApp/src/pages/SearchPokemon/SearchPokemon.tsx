@@ -8,7 +8,7 @@ import Head from '../../components/Head/Head';
 import api from '../../services/api';
 import { DrawerActions } from '@react-navigation/native';
 
-import { Container, Header, CenterView, SearchBtn, Input, TextProps, CenterProps } from './SearchPokemon.styles'
+import { Container, Header, CenterView, SearchBtn, Input, TextProps, TextName, CenterProps } from './SearchPokemon.styles'
 
 const SearchPokemon = ({navigation}: any) => {
   const [data, setData] = React.useState<any[]>([])
@@ -81,7 +81,7 @@ const SearchPokemon = ({navigation}: any) => {
               <CenterProps>
                 <Image source={{ uri: item.img }} style={{ width: 200, height: 200, marginRight: -15, }} />
                 <View>
-                  <TextProps>Name: {item.name}</TextProps>
+                  <TextName>{item.name}</TextName>
                   <TextProps>Type: {item.type} </TextProps>
                   <TextProps>Abilities: {item.abilities} </TextProps>
                   <TextProps>Weight: {item.weight} </TextProps>

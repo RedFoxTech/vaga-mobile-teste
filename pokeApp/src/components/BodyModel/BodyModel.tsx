@@ -1,10 +1,12 @@
 import React from 'react'
 import { View, Image } from 'react-native'
 
-import { Container, CenterView, TouchClose, TextDetails, Header, Text } from './BodyModel.styles'
+import { Container, CenterView, TouchClose, TextDetails, Header } from './BodyModel.styles'
 import api from '../../services/api'
 
-export default function BodyModel({ name, closed }) {
+import Icon from 'react-native-vector-icons/FontAwesome'
+
+export default function BodyModel({ name, closed }: any) {
   const [pokemonData, setPokemonData] = React.useState<any[]>([])
 
   async function loadData() {
@@ -40,7 +42,7 @@ export default function BodyModel({ name, closed }) {
     <Container>
       <Header>
         <TouchClose onPress={() => closed()} >
-          <Text>X</Text>
+          <Icon name="window-close" color="#E74233" size={25} />
         </TouchClose>
       </Header>
 
