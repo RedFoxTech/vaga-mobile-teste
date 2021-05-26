@@ -1,59 +1,63 @@
 import React from 'react'
-import { View, Text, Image, Button } from 'react-native'
+import { View, Image } from 'react-native'
+
+import { Container, CenterView, TouchClose, TextDetails, Header, Text } from './BodyModel.styles'
 import api from '../../services/api'
 
-export default function BodyModel({name, closed}) {
-    const [pokemonData, setPokemonData] = React.useState<any[]>([])
+export default function BodyModel({ name, closed }) {
+  const [pokemonData, setPokemonData] = React.useState<any[]>([])
 
-    async function loadData() {
-          
-        try {
-          const response = await api.get(`/pokemon/${name}`)
-    
-          const pokemonAdapter = async () => {
-            return [{
-              id: response.data.id,
-              abilities: response.data.abilities[1].ability.name,
-              name: response.data.name,
-              img: response.data.sprites["front_default"],
-              type: response.data.types[0].type.name,
-              weight: response.data.weight,
-              height: response.data.height
-            }]
-          }
-  
-          const details = await pokemonAdapter()
-          setPokemonData(details)
-        //   console.log(pokemonData)
-        } catch (error) {
-          console.log(error)
-        }
+  async function loadData() {
+
+    try {
+      const response = await api.get(`/pokemon/${name}`)
+
+      const pokemonAdapter = async () => {
+        return [{
+          id: response.data.id,
+          abilities: response.data.abilities[1].ability.name,
+          name: response.data.name,
+          img: response.data.sprites["front_default"],
+          type: response.data.types[0].type.name,
+          weight: response.data.weight,
+          height: response.data.height
+        }]
       }
-  
-      React.useEffect(() => {
-              
-          loadData()
-          return;
-      },[pokemonData])
-    return (
-        <View style={{ flex:1, alignItems:'center', justifyContent:'center'}}>
-            <View style={{alignItems:'center', justifyContent:'center', backgroundColor:'#FFF', width: 300, height:400, borderRadius: 5}}>
-                           
-                <Button title="Close" onPress={() => closed()} />
 
+      const details = await pokemonAdapter()
+      setPokemonData(details)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-                <Text> {name} </Text>
-                            
-                {pokemonData.map(item =>
-                <View key={item.id}>
-                    <Image source={{uri: item.img}} style={{ width: 200, height: 200, marginLeft: 4 }} />
-                    <Text>Name: {item.name}</Text>
-                    <Text>Ability: {item.abilities}</Text>
-                    <Text>Height: {item.height}</Text>
-                    <Text>Weight: {item.weight}lbs</Text>
-                    <Text>Type: {item.type}</Text>
-                </View>)}
-            </View>
-        </View>
-    )
+  React.useEffect(() => {
+
+    loadData()
+    return;
+  }, [pokemonData])
+  return (
+    <Container>
+      <Header>
+        <TouchClose onPress={() => closed()} >
+          <Text>X</Text>
+        </TouchClose>
+      </Header>
+
+      <CenterView>
+
+        <Image source={require('../../assets/img/gotcha.png')} style={{width:80, height: 50, marginTop: 5, marginBottom: -20}} />
+
+        {pokemonData.map(item =>
+          <View key={item.id}>
+            <Image source={{ uri: item.img }} style={{ width: 200, height: 200, marginLeft: 4, marginBottom: -15 }} />
+            <TextDetails>Name: {item.name}</TextDetails>
+            <TextDetails>Ability: {item.abilities}</TextDetails>
+            <TextDetails>Type: {item.type}</TextDetails>
+            <TextDetails>Height: {item.height}</TextDetails>
+            <TextDetails>Weight: {item.weight}lbs</TextDetails>
+          </View>)}
+      </CenterView>
+    </Container>
+  )
 }

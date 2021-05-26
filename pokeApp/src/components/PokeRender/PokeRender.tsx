@@ -1,9 +1,9 @@
 import React from 'react';
-import { Modal, Image, Alert, View, Button } from 'react-native'
-import api from '../../services/api';
+import { Modal, Image, Alert, View } from 'react-native';
 import BodyModel from '../BodyModel/BodyModel';
-import { Container, TextName, Touch } from './PokeRender.styles'
-export default function PokeRender({ data, openModal }) {
+import { Container, TextName, Touch } from './PokeRender.styles';
+
+export default function PokeRender({ data }) {
     const [modalVisible, setModalVisible] = React.useState(false);
     
 
@@ -20,13 +20,12 @@ export default function PokeRender({ data, openModal }) {
   }
 
     return (
-        <Container>
             <Touch onPress={() => {[openModal()]}}>
                 <Image source={{ uri: urlImage }} style={{ width: 50, height: 50 }} />
                 <TextName> {name} </TextName>
-            </Touch>
+
                 <Modal
-                    animationType="slide"
+                    animationType="fade"
                     visible={modalVisible}
                     transparent={true}
                     onRequestClose={() => {
@@ -38,6 +37,6 @@ export default function PokeRender({ data, openModal }) {
                     <BodyModel name={name} closed={() => closeModal()} />
                   </View> 
                 </Modal>
-        </Container>
+            </Touch>
     );
 }
