@@ -2,10 +2,11 @@ import React from 'react'
 import { FlatList, Image, View } from 'react-native'
 
 import Pokedash from '../../models/Pokedash'
-
+import { DrawerActions } from '@react-navigation/native';
 import { Container, Header, Title } from './AllPokemons.styles';
 
 import PokeRender from '../../components/PokeRender/PokeRender';
+import Head from '../../components/Head/Head';
 
 
 const LoadingBlock = () => {
@@ -17,7 +18,7 @@ const LoadingBlock = () => {
     );
 }
 
-export default function AllPokemons() {
+export default function AllPokemons({navigation}) {
 
     
     const [pokemons, setPokemons] = React.useState<any[]>([])
@@ -41,6 +42,7 @@ export default function AllPokemons() {
 
     return (
         <Container>
+            <Head onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
             <Header>
                 <Title>Pokemon List</Title>
                 <Image source={require('../../assets/img/pokebola.png')} style={{ width: 80, height: 80 }} />

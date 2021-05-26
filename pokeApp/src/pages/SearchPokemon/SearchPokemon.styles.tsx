@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
 flex: 1;
-align-items: center
 background-color: #E74233;
 `;
 export const CenterView = styled.View`

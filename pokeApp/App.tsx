@@ -1,7 +1,7 @@
 import React from 'react';
-import { View } from 'react-native';
-import AllPokemons from './src/pages/AllPokemons/AllPokemons';
-import SearchPokemon from './src/pages/SearchPokemon/SearchPokemon';
+import 'react-native-gesture-handler';
+import { StatusBar, View } from 'react-native';
+import Router from './src/Routes';
 
 
 const App = () => {
@@ -9,7 +9,9 @@ const App = () => {
 
   return (
     <View style={{flex: 1, backgroundColor: '#FFF'}}>
-      <AllPokemons />
+      <StatusBar backgroundColor="#E74233" barStyle="light-content" />
+      
+      <Router />
     </View>
   );
 };

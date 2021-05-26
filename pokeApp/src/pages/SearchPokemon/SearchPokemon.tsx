@@ -4,11 +4,13 @@ import {
   Image,
   View,
 } from 'react-native';
+import Head from '../../components/Head/Head';
 import api from '../../services/api';
+import { DrawerActions } from '@react-navigation/native';
 
 import { Container, Header, CenterView, SearchBtn, Input, TextProps, CenterProps } from './SearchPokemon.styles'
 
-const SearchPokemon = () => {
+const SearchPokemon = ({navigation}) => {
   const [data, setData] = React.useState<any[]>([])
   const [pokemonName, setPokemonName] = React.useState('')
   const [loading, setLoading] = React.useState(false)
@@ -49,6 +51,7 @@ const SearchPokemon = () => {
 
   return (
     <Container>
+      <Head onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
       <Header>
         <Input
           placeholderTextColor="#000"
