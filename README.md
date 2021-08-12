@@ -1,50 +1,33 @@
-# Teste de Mobile
+# PokeList App
 
-Olá Dev!  Tudo bem?
+## This is a simple react native app thats create a infinite scroll list ordered by pokemons number
 
-Nós estamos sempre em busca de profissionais interessantes e interessados, com boa capacidade de aprendizado, adaptação e principalmente bom senso!
+[alt text](./example_images/splash "Splash Screen")
+[alt text](./example_images/home "Home Screen")
+[alt text](./example_images/home_loading "Home Screen Loading more itens")
+[alt text](./example_images/stats "Pokemon stats page")
 
-Este teste tem como objetivo avaliar e desafiar você. Não é obrigatório realizá-lo completamente, queremos apenas reconhecer seu esforço e potencial para aprender, se adaptar e tomar decisões.
+## In this app you can:
 
-Vamos ao teste!
+- [x] List all pokemon
+- [x] Search a pokemon by code
+- [x] Search a pokemon by name
+- [x] See some pokemon stats and infos
 
-## Desafio Pokémon
+## Technologies
 
-Sua missão é criar um app para buscar, listar e detalhar pokémons, usando a API Pokeapi.co.
+### I developed this app with:
 
-O layout inteiro é livre, mas a lista deverá conter no mínimo o nome do pokémon e a sua respectiva imagem.
+- React Native
+- Expo
+- Typescript
+- Axios
 
-Sobre a busca, ela poderá ser feita de 3 formas: digitando o nome do pokémon, selecionando um ou mais tipos específicos ou listando todos de uma vez (paginação ou scroll infinito são legais também!).
+## How you can run this App ?
 
-Seria interessante poder ordenar essa lista, então pensamos em pelo menos dois tipos: por número do Pokémon (padrão) ou por nome (ordem alfabética). Fique à vontade para fazer mais alguma ordenação diferente.
+1.  Make sure that you have the right setup to run a expo-cli project.
+2.  Clone this repositorie.
+3.  Run npm install at the root folder.
+4.  Run expo start to start the development server
 
-Mas nossa busca não seria muito útil só com nome e foto de cada Pokémon. Então sugerimos que, ao clicar em um item da lista, abra um modal ou uma outra tela, com mais detalhes e características. Inclusive você pode decidir quais informações seriam mais úteis para detalhar ali.
-
-## Consigo fazer?
-
-Consegue sim! Só precisa saber (ou aprender agora) um pouco sobre as seguintes tecnologias:
-- Se for nativo use:
-  - Java ou Kotlin, para Android
-  - Swift para iOS
-- Se for híbrido, use Javascript (React Native) ou Dart (Flutter)
-- JSON
-- Git
-- Consumo de API Rest
-
-
-## Regras
-
-Para o desafio ficar mais interessante, decidimos criar algumas regras básicas:
-
-- No layout, você deve utilizar algum padrão de design conhecido para Mobile (ex: Material Design)
-- Você também deve utilizar algum padrão de desenvolvimento (ex: MVC, MVVM, MVP, etc...)
-
-## Por onde começo?
-
-Primeiramente, você pode fazer um fork desse repositório aqui, para sua conta do Github, depois disso crie uma branch nova com o seu nome (ex: nome_sobrenome), para podermos indentificá-lo.
-
-Após terminar o desafio, você pode solicitar um pull request para a branch master do nosso repositório. Vamos receber e fazer a avaliação de todos.
-
-## Só isso?
-
-Só! Mas se estiver motivado, pode publicá-lo na sua loja do Google Play ou da App Store e nos enviar o link.
+## Here you can [Download](https://mega.nz/file/qYR3DYRB#fZu9ueJyroITQ7mazp--Wpd8dxm5x_4CSxplGye6Vtw) this APK file.
