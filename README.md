@@ -1,7 +1,5 @@
 # PokeEasy
 
-## ✅ Resolução
-
 ### ⚒️ Tecnologias usadas
 * React Native (Javascript)
 * Expo
